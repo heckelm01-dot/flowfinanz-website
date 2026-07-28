@@ -1,0 +1,91 @@
+/* Heckel Consulting — Color tokens
+   Palette derived directly from the brand mark gradient
+   (#0A5BFF deep blue -> #1877FE -> #319CFE -> #5CD6FE cyan) and the near-black wordmark. */
+:root {
+  /* ---- Brand blue scale ---- */
+  --blue-50:  #EAF2FF;
+  --blue-100: #D6E6FE;
+  --blue-200: #ADCCFE;
+  --blue-300: #7FB2FE;
+  --blue-400: #4A93FE;
+  --blue-500: #1877FE; /* primary — main bar color */
+  --blue-600: #0A63FF;
+  --blue-700: #0A5BFF; /* deep bar / strong */
+  --blue-800: #0B44BE;
+  --blue-900: #0C3080;
+
+  /* ---- Cyan accent scale (top-right of the mark) ---- */
+  --cyan-300: #A6E9FF;
+  --cyan-400: #7FDFFE;
+  --cyan-500: #5CD6FE; /* accent */
+  --cyan-600: #319CFE; /* mid transition */
+
+  /* ---- Cool neutrals (subtle blue undertone) ---- */
+  --white:    #FFFFFF;
+  --gray-50:  #F6F8FB;
+  --gray-100: #EDF1F6;
+  --gray-200: #DDE3EC;
+  --gray-300: #C3CCD9;
+  --gray-400: #97A3B4;
+  --gray-500: #6B7688;
+  --gray-600: #4A5566;
+  --gray-700: #333D4B;
+  --gray-800: #1E2732;
+  --gray-900: #121821;
+  --ink:      #0B0F16; /* near-black wordmark ink */
+
+  /* ---- Semantic status ---- */
+  --green-500:  #16A34A;
+  --green-50:   #E7F6EC;
+  --amber-500:  #D97706;
+  --amber-50:   #FBF0DE;
+  --red-500:    #DC2626;
+  --red-50:     #FBE9E9;
+
+  /* ================= Semantic aliases ================= */
+  /* Backgrounds & surfaces */
+  --color-bg:             var(--white);
+  --surface-card:         var(--white);
+  --surface-muted:        var(--gray-50);
+  --surface-sunken:       var(--gray-100);
+  --surface-inverse:      var(--ink);
+  --surface-brand:        var(--blue-500);
+
+  /* Text */
+  --text-primary:   var(--ink);
+  --text-secondary: var(--gray-600);
+  --text-muted:     var(--gray-500);
+  --text-inverse:   var(--white);
+  --text-on-brand:  var(--white);
+  --text-brand:     var(--blue-600);
+
+  /* Brand */
+  --color-brand:        var(--blue-500);
+  --color-brand-strong: var(--blue-700);
+  --color-brand-soft:   var(--blue-50);
+  --color-accent:       var(--cyan-500);
+
+  /* Borders */
+  --border-subtle:  var(--gray-100);
+  --border-default: var(--gray-200);
+  --border-strong:  var(--gray-300);
+
+  /* Status semantic */
+  --color-success:    var(--green-500);
+  --color-success-bg: var(--green-50);
+  --color-warning:    var(--amber-500);
+  --color-warning-bg: var(--amber-50);
+  --color-danger:     var(--red-500);
+  --color-danger-bg:  var(--red-50);
+  --color-info:       var(--blue-500);
+  --color-info-bg:    var(--blue-50);
+
+  /* Focus */
+  --focus-ring: rgba(24, 119, 254, 0.35);
+
+  /* ---- Signature gradients (match the logo direction: deep blue -> cyan) ---- */
+  --gradient-brand:    linear-gradient(120deg, #0A5BFF 0%, #1877FE 42%, #319CFE 72%, #5CD6FE 100%); /* @kind color */
+  --gradient-brand-45: linear-gradient(45deg, #0A5BFF 0%, #1877FE 45%, #5CD6FE 100%); /* @kind color */
+  --gradient-ink:      linear-gradient(160deg, #12182A 0%, #0B0F16 100%); /* @kind color */
+  --gradient-soft:     linear-gradient(180deg, #F6F8FB 0%, #FFFFFF 100%); /* @kind color */
+}

@@ -1,0 +1,43 @@
+/* Heckel Consulting — Typography tokens
+   One family, Montserrat, across the whole system. Hierarchy is built with weight,
+   size and letter-spacing. Signature move: uppercase eyebrows/labels with wide tracking
+   (echoing the spaced "SOLUTION" in the wordmark). */
+:root {
+  --font-sans:    'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-display: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono:    ui-monospace, 'SFMono-Regular', 'Menlo', 'Consolas', monospace;
+
+  /* Weights */
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-extrabold:800;
+
+  /* Type scale */
+  --text-xs:   0.75rem;   /* 12 */
+  --text-sm:   0.875rem;  /* 14 */
+  --text-base: 1rem;      /* 16 */
+  --text-md:   1.125rem;  /* 18 */
+  --text-lg:   1.25rem;   /* 20 */
+  --text-xl:   1.5rem;    /* 24 */
+  --text-2xl:  1.875rem;  /* 30 */
+  --text-3xl:  2.375rem;  /* 38 */
+  --text-4xl:  3rem;      /* 48 */
+  --text-5xl:  3.75rem;   /* 60 */
+  --text-6xl:  4.75rem;   /* 76 */
+
+  /* Line heights */
+  --leading-none:    1;
+  --leading-tight:   1.12;
+  --leading-snug:    1.28;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.68;
+
+  /* Letter spacing */
+  --tracking-tight:  -0.02em;
+  --tracking-snug:   -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.08em;
+  --tracking-wider:  0.22em;  /* eyebrow / small-caps label — the "SOLUTION" treatment */
+}
