@@ -26,6 +26,7 @@
   img{max-width:100%;display:block}
   button{font-family:inherit}
   @keyframes heroFade{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+  [data-portrait-slot]:not(:has(image-slot[data-filled])){opacity:1 !important;filter:none !important}
   @keyframes pageIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
   @keyframes growBar{from{transform:scaleY(0)}to{transform:scaleY(1)}}
   @keyframes floatGlow{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(24px,-18px) scale(1.08)}}
@@ -135,7 +136,32 @@
           </div>
           <div onMouseEnter="{{ reveal2b }}" style="position:relative;display:flex;align-items:center;justify-content:center;min-height:min(400px,52vw);animation:heroFade .8s var(--ease-out) .1s both">
             <div style="position:absolute;width:300px;height:300px;background:var(--gradient-brand-45);filter:blur(100px);opacity:.16;border-radius:50%"></div>
-            <svg viewBox="0 0 400 200" style="position:relative;width:min(400px,88%);height:auto;display:block;overflow:visible">
+            <div style="position:absolute;inset:0;z-index:0;display:flex;align-items:flex-end;justify-content:center;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 26%,#000 88%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 26%,#000 88%,transparent 100%)">
+              <div style="position:relative;width:100%;height:100%">
+                <div data-portrait-slot="" style="position:absolute;left:-4%;bottom:0;width:20%;height:56%;opacity:.16;filter:grayscale(1) blur(1.5px)">
+                  <x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="100%,100%" id="hero-expert-1" shape="rect" object-fit="contain" object-position="center bottom" placeholder="Experte 1 – freigestellt"></x-import>
+                </div>
+                <div data-portrait-slot="" style="position:absolute;left:13%;bottom:0;width:22%;height:64%;opacity:.2;filter:grayscale(1) blur(1px)">
+                  <x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="100%,100%" id="hero-expert-2" shape="rect" object-fit="contain" object-position="center bottom" placeholder="Experte 2 – freigestellt"></x-import>
+                </div>
+                <div data-portrait-slot="" style="position:absolute;left:38%;bottom:0;width:24%;height:60%;opacity:.14;filter:grayscale(1) blur(1.5px)">
+                  <x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="100%,100%" id="hero-expert-3" shape="rect" object-fit="contain" object-position="center bottom" placeholder="Experte 3 – freigestellt"></x-import>
+                </div>
+                <div data-portrait-slot="" style="position:absolute;right:12%;bottom:0;width:22%;height:66%;opacity:.2;filter:grayscale(1) blur(1px)">
+                  <x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="100%,100%" id="hero-expert-4" shape="rect" object-fit="contain" object-position="center bottom" placeholder="Experte 4 – freigestellt"></x-import>
+                </div>
+                <div data-portrait-slot="" style="position:absolute;right:-4%;bottom:0;width:20%;height:54%;opacity:.15;filter:grayscale(1) blur(1.5px)">
+                  <x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="100%,100%" id="hero-expert-5" shape="rect" object-fit="contain" object-position="center bottom" placeholder="Experte 5 – freigestellt"></x-import>
+                </div>
+                <div data-portrait-slot="" style="position:absolute;left:16%;bottom:0;width:35%;height:94%;opacity:.5;filter:saturate(.92)">
+                  <x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="100%,100%" id="hero-michael" shape="rect" object-fit="contain" object-position="center bottom" placeholder="Michael – freigestellt"></x-import>
+                </div>
+                <div data-portrait-slot="" style="position:absolute;right:16%;bottom:0;width:35%;height:90%;opacity:.46;filter:saturate(.92)">
+                  <x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="100%,100%" id="hero-rene" shape="rect" object-fit="contain" object-position="center bottom" placeholder="René – freigestellt"></x-import>
+                </div>
+              </div>
+            </div>
+            <svg viewBox="0 0 400 200" style="position:relative;z-index:1;width:min(400px,88%);height:auto;display:block;overflow:visible">
               <defs><linearGradient id="hero2binf" x1="0" y1="0" x2="400" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#0A5BFF"></stop><stop offset="1" stop-color="#5CD6FE"></stop></linearGradient></defs>
               <path d="M200 100 C200 30 80 30 80 100 C80 170 200 170 200 100 C200 30 320 30 320 100 C320 170 200 170 200 100 Z" fill="none" stroke="rgba(10,91,255,.10)" stroke-width="8" stroke-linecap="round"></path>
               <path data-inf-draw="" d="M200 100 C200 30 80 30 80 100 C80 170 200 170 200 100 C200 30 320 30 320 100 C320 170 200 170 200 100 Z" fill="none" stroke="url(#hero2binf)" stroke-width="8" stroke-linecap="round" stroke-dasharray="640" stroke-dashoffset="640" style="animation:infDraw 2.4s var(--ease-out) .3s forwards"></path>
@@ -770,22 +796,22 @@
             <div style="width:clamp(120px,13vw,168px);aspect-ratio:1;border-radius:50%;overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:20px">
               <x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="100%,100%" id="v2-team-rene" shape="circle" placeholder="Foto René"></x-import>
             </div>
-            <div style="font-size:17px;font-weight:700;letter-spacing:-0.01em;margin-bottom:6px">René Zegnotat</div>
-            <div style="font-size:14px;color:var(--text-muted);line-height:1.5">Gründer &amp; Geschäftsführer</div>
+            <div style="font-size:17px;font-weight:700;letter-spacing:-0.01em;margin-bottom:6px">Michael Heckel</div>
+            <div style="font-size:14px;color:var(--text-muted);line-height:1.5">Gründer &amp; Geschäftsführer<br>(B.Sc., Immobilienökonom)</div>
           </div>
           <div data-reveal="" style="opacity:0;transform:translate(70px,50px) rotate(12deg) scale(.6);transition:opacity .85s var(--ease-out) .12s,transform .95s cubic-bezier(.22,1.2,.36,1) .12s;display:flex;flex-direction:column;align-items:center;text-align:center;margin-top:clamp(32px,4.5vw,64px)">
             <div style="width:clamp(120px,13vw,168px);aspect-ratio:1;border-radius:50%;overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:20px">
               <x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="100%,100%" id="v2-team-michael" shape="circle" placeholder="Foto Michael"></x-import>
             </div>
-            <div style="font-size:17px;font-weight:700;letter-spacing:-0.01em;margin-bottom:6px">Michael Heckel</div>
-            <div style="font-size:14px;color:var(--text-muted);line-height:1.5">Immobilienexperte<br>(IHK-Zertifiziert)</div>
+            <div style="font-size:17px;font-weight:700;letter-spacing:-0.01em;margin-bottom:6px"><span style="letter-spacing: -0.17px;">René Zegnotat</span></div>
+            <div style="font-size:14px;color:var(--text-muted);line-height:1.5">ETF Experte<br>(B.A., IHK-Zertifiziert)</div>
           </div>
           <div data-reveal="" style="opacity:0;transform:translate(-70px,50px) rotate(-12deg) scale(.6);transition:opacity .85s var(--ease-out) .24s,transform .95s cubic-bezier(.22,1.2,.36,1) .24s;display:flex;flex-direction:column;align-items:center;text-align:center">
             <div style="width:clamp(120px,13vw,168px);aspect-ratio:1;border-radius:50%;overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:20px">
               <x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="100%,100%" id="v2-team-sebastian" shape="circle" placeholder="Foto Sebastian"></x-import>
             </div>
-            <div style="font-size:17px;font-weight:700;letter-spacing:-0.01em;margin-bottom:6px">Sebastian Lingen</div>
-            <div style="font-size:14px;color:var(--text-muted);line-height:1.5">Vermögensaufbau- &amp; Versicherungsexperte<br>(IHK-Zertifiziert)</div>
+            <div style="font-size:17px;font-weight:700;letter-spacing:-0.01em;margin-bottom:6px">Dalibor Heriban</div>
+            <div style="font-size:14px;color:var(--text-muted);line-height:1.5">Steuerberater für Vermögensaufbau</div>
           </div>
           <div data-reveal="" style="opacity:0;transform:translate(70px,50px) rotate(12deg) scale(.6);transition:opacity .85s var(--ease-out) .36s,transform .95s cubic-bezier(.22,1.2,.36,1) .36s;display:flex;flex-direction:column;align-items:center;text-align:center;margin-top:clamp(32px,4.5vw,64px)">
             <div style="width:clamp(120px,13vw,168px);aspect-ratio:1;border-radius:50%;background:var(--gradient-ink);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);margin-bottom:20px">
@@ -1066,7 +1092,7 @@
                   <div style="border-radius:12px;overflow:hidden;aspect-ratio:16/8">
                     <x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="100%,100%" id="v2-station-heckel" shape="rect" placeholder="Bild von Michael"></x-import>
                   </div>
-                  <h3 style="font-size:18px;font-weight:700;letter-spacing:-0.01em;margin:0">Heckel Consulting — Immobilien- &amp; Finanzberatung</h3>
+                  <h3 style="font-size:18px;font-weight:700;letter-spacing:-0.01em;margin:0">FlowFinanz — Immobilien- &amp; Finanzberatung</h3>
                   <p style="font-size:14.5px;color:var(--text-secondary);line-height:1.6;margin:0">Ganzheitliche Beratung für Menschen mit gutem Einkommen: erst das Fundament stark machen — mehr Netto, weniger Kosten — und darauf die Immobilie als Kapitalanlage bauen.</p>
                 </div>
               </div>
@@ -1238,6 +1264,367 @@
     </section>
   </div>
   </sc-if>
+  <!-- ================= IMPRESSUM ================= -->
+  <sc-if value="{{ isImpressum }}">
+  <div data-screen-label="Impressum" style="animation:pageIn .5s var(--ease-out) both">
+    <section style="padding:clamp(104px,11vw,150px) 0 clamp(56px,7vw,90px);background:var(--surface-muted);border-bottom:1px solid var(--border-subtle)">
+      <div style="max-width:860px;margin:0 auto;padding:0 24px">
+        <button onClick="{{ goStart }}" style="display:inline-flex;align-items:center;gap:8px;background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:14px;font-weight:600;color:var(--color-brand);margin-bottom:22px">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg>Zurück zur Startseite
+        </button>
+        <p style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.22em;color:var(--color-brand);margin:0 0 14px">RECHTLICHES</p>
+        <h1 style="font-size:clamp(32px,4.4vw,50px);font-weight:800;letter-spacing:-0.02em;line-height:1.06;margin:0 0 16px">Impressum</h1>
+      </div>
+    </section>
+
+    <section style="padding:clamp(48px,6vw,80px) 0 clamp(64px,8vw,104px)">
+      <div style="max-width:860px;margin:0 auto;padding:0 24px">
+
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:0 0 16px">Anbieter</h2>
+        <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:16px;padding:26px 28px;box-shadow:var(--shadow-sm);margin-bottom:8px">
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:12px 28px;font-size:15.5px;line-height:1.6">
+            <span style="font-weight:700;color:var(--text-primary)">Firma</span><span style="color:var(--text-secondary)">FlowFinanz<br></span>
+            <span style="font-weight:700;color:var(--text-primary)">Anschrift</span><span style="color:var(--text-secondary)">Max-Reger-Str. 16<br>86633 Neuburg an der Donau<br>Deutschland</span>
+            <span style="font-weight:700;color:var(--text-primary)">Inhaber</span><span style="color:var(--text-secondary)">Michael Heckel</span>
+            <span style="font-weight:700;color:var(--text-primary)">Telefon</span><span style="color:var(--text-secondary)"><a href="tel:+491774843887">0177 4843887</a></span>
+            <span style="font-weight:700;color:var(--text-primary)">E-Mail</span><span style="color:var(--text-secondary)"><a href="mailto:info@flowfinanz.de">info@flowfinanz.de</a></span>
+            <span style="font-weight:700;color:var(--text-primary)">Internet</span><span style="color:var(--text-secondary)">www.flowfinanz.de</span>
+            
+            <span style="font-weight:700;color:var(--text-primary)">Inhaltlich verantwortlich</span><span style="color:var(--text-secondary)">Michael Heckel, Anschrift wie oben (§ 18 Abs. 2 MStV)</span>
+          </div>
+        </div>
+
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">Das Unternehmen ist tätig als</h2>
+        <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:16px;padding:26px 28px;box-shadow:var(--shadow-sm)">
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:12px 28px;font-size:15.5px;line-height:1.6">
+            <span style="font-weight:700;color:var(--text-primary)">Versicherungsmakler</span><span style="color:var(--text-secondary)">Erlaubnis nach § 34d Abs. 1 GewO<br>Registernummer: D-N6E0-J205X-41</span>
+            <span style="font-weight:700;color:var(--text-primary)">Immobilienmakler</span><span style="color:var(--text-secondary)">Erlaubnis nach § 34c Abs. 1 GewO</span>
+          </div>
+        </div>
+
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">Zuständige Aufsichts- und Erlaubnisbehörden</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div style="background:var(--surface-muted);border:1px solid var(--border-subtle);border-radius:14px;padding:20px 22px">
+            <div style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.14em;color:var(--color-brand);margin-bottom:8px">§ 34D GEWO</div>
+            <div style="font-size:15.5px;font-weight:700;margin-bottom:6px">IHK für München und Oberbayern</div>
+            <p style="font-size:14.5px;color:var(--text-secondary);line-height:1.6;margin:0">Körperschaft des öffentlichen Rechts<br>Max-Joseph-Straße 2, 80333 München<br>Telefon 089 5116-0<br><a href="https://www.ihk-muenchen.de" target="_blank" rel="noopener noreferrer">ihk-muenchen.de</a></p>
+          </div>
+          <div style="background:var(--surface-muted);border:1px solid var(--border-subtle);border-radius:14px;padding:20px 22px">
+            <div style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.14em;color:var(--color-brand);margin-bottom:8px">§ 34C GEWO</div>
+            <div style="font-size:15.5px;font-weight:700;margin-bottom:6px">IHK für München und Oberbayern</div>
+            <p style="font-size:14.5px;color:var(--text-secondary);line-height:1.6;margin:0">Körperschaft des öffentlichen Rechts<br>Max-Joseph-Straße 2, 80333 München<br>Telefon 089 5116-0<br><a href="https://www.ihk-muenchen.de/" target="_blank" rel="noopener noreferrer" style="color: rgb(24, 119, 254);">ihk-muenchen.de</a></p>
+          </div>
+        </div>
+
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">Das Vermittlerregister wird geführt bei</h2>
+        <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:16px;padding:26px 28px;box-shadow:var(--shadow-sm)">
+          <div style="font-size:15.5px;font-weight:700;margin-bottom:8px">Deutscher Industrie- und Handelskammertag (DIHK) e. V.</div>
+          <p style="font-size:15.5px;color:var(--text-secondary);line-height:1.62;margin:0">Breite Straße 29, 10178 Berlin<br>Telefon 0180 6005850 (Festnetzpreis 0,20 €/Anruf; Mobilfunk maximal 0,60 €/Anruf)<br>Fax 030 203081000<br>E-Mail <a href="mailto:vr@dihk.de">vr@dihk.de</a><br><a href="https://www.vermittlerregister.info" target="_blank" rel="noopener noreferrer">www.vermittlerregister.info</a></p>
+        </div>
+
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">Berufsrechtliche Regelungen</h2>
+        <div style="background:var(--surface-muted);border:1px solid var(--border-subtle);border-radius:14px;padding:22px 24px">
+          <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:8px;font-size:15.5px;color:var(--text-secondary);line-height:1.6">
+            <li>§ 34c und § 34d Gewerbeordnung (GewO)</li>
+            <li>§ 48b Versicherungsaufsichtsgesetz (VAG)</li>
+            <li>§§ 59–68 Versicherungsvertragsgesetz (VVG)</li>
+            <li>Verordnung über die Versicherungsvermittlung und -beratung (VersVermV)</li>
+            <li>Makler- und Bauträgerverordnung (MaBV)</li>
+          </ul>
+        </div>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:14px 0 0">Die berufsrechtlichen Regelungen können über die vom Bundesministerium der Justiz und der juris GmbH betriebene Website <a href="https://www.gesetze-im-internet.de" target="_blank" rel="noopener noreferrer">www.gesetze-im-internet.de</a> eingesehen und abgerufen werden.</p>
+
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">Angaben zur Berufshaftpflichtversicherung</h2>
+        <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:16px;padding:26px 28px;box-shadow:var(--shadow-sm)">
+          <p style="font-size: 15.5px; color: var(--text-secondary); line-height: 1.62; margin: 0; font-weight: 400"><em><span style="color: rgb(35, 32, 33); font-style: normal; white-space: pre-wrap">Ergo Versicherungs AG
+40198 Düsseldorf
+Geltungsraum Deutschland</span></em><br></p>
+        </div>
+
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">Beratung und Vergütung</h2>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Die Tätigkeit beinhaltet auch Beratung. Sie erfolgt auf Grundlage einer ausgewogenen Marktuntersuchung einer hinreichenden Zahl von Versicherungsverträgen und Versicherungsunternehmen. Die Empfehlung richtet sich nach fachlichen Kriterien und Ihrem individuellen Bedarf – nicht nach der Vergütung eines Anbieters. Die Liste der berücksichtigten Versicherungsunternehmen wird auf Wunsch jederzeit offengelegt.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Die Vergütung der Tätigkeit erfolgt als:</p>
+        <div style="background:var(--surface-muted);border:1px solid var(--border-subtle);border-radius:14px;padding:22px 24px;margin-bottom:14px">
+          <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:8px;font-size:15.5px;color:var(--text-secondary);line-height:1.6">
+            <li>in den Versicherungsprämien enthaltene Provision – eine sogenannte Courtage –, die vom jeweiligen Produktanbieter ausgezahlt wird, oder</li>
+            <li>konkret vereinbarte Zahlung durch den Kunden (Honorarvermittlung) oder</li>
+            <li>Kombination aus beidem</li>
+          </ul>
+        </div>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Dies ist letztlich abhängig von Ihren Wünschen und Bedürfnissen sowie den Versicherungs- und Vorsorgeprodukten, die vermittelt werden. Welches Modell gilt, wird vor Beginn der Tätigkeit schriftlich vereinbart. Eine Doppelvergütung für denselben Vertrag findet nicht statt.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0">Der Inhaber hält keine unmittelbaren oder mittelbaren Beteiligungen von mehr als 10 % der Stimmrechte oder des Kapitals an einem Versicherungsunternehmen. Ein Versicherungsunternehmen oder das Mutterunternehmen eines Versicherungsunternehmens hält keine unmittelbaren oder mittelbaren Beteiligungen von mehr als 10 % der Stimmrechte oder des Kapitals an FlowFinanz – Michael Heckel.</p>
+
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">Schlichtungsstellen</h2>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Die Anschriften der Schlichtungsstellen, die bei Streitigkeiten zwischen Vermittlern oder Beratern und Versicherungsnehmern angerufen werden können, lauten:</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px">
+          <div style="background:var(--surface-muted);border:1px solid var(--border-subtle);border-radius:14px;padding:20px 22px">
+            <div style="font-size:15.5px;font-weight:700;margin-bottom:6px">Versicherungsombudsmann e. V.</div>
+            <p style="font-size:14.5px;color:var(--text-secondary);line-height:1.6;margin:0">Postfach 08 06 32, 10006 Berlin<br>Telefon 0800 3696000<br><a href="https://www.versicherungsombudsmann.de" target="_blank" rel="noopener noreferrer">versicherungsombudsmann.de</a></p>
+          </div>
+          <div style="background:var(--surface-muted);border:1px solid var(--border-subtle);border-radius:14px;padding:20px 22px">
+            <div style="font-size:15.5px;font-weight:700;margin-bottom:6px">Ombudsmann Private Kranken- und Pflegeversicherung</div>
+            <p style="font-size:14.5px;color:var(--text-secondary);line-height:1.6;margin:0">Postfach 06 02 22, 10052 Berlin<br>Telefon 0800 2550444<br><a href="https://www.pkv-ombudsmann.de" target="_blank" rel="noopener noreferrer">pkv-ombudsmann.de</a></p>
+          </div>
+        </div>
+        <div style="background:var(--surface-muted);border:1px solid var(--border-subtle);border-radius:14px;padding:20px 22px;margin-bottom:14px">
+          <div style="font-size:15.5px;font-weight:700;margin-bottom:6px">Schlichtungsstelle für gewerbliche Versicherungs-, Anlage- und Kreditvermittlung</div>
+          <p style="font-size:14.5px;color:var(--text-secondary);line-height:1.6;margin:0">Glockengießerwall 2, 20095 Hamburg<br>Telefon 040 69650890<br><a href="https://www.schlichtung-finanzberatung.de" target="_blank" rel="noopener noreferrer">schlichtung-finanzberatung.de</a></p>
+        </div>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Beschwerden können außerdem direkt an die zuständige Erlaubnisbehörde (IHK für München und Oberbayern) gerichtet werden. Weitere Adressen von Schlichtungsstellen und Möglichkeiten der außergerichtlichen Streitbeilegung erhalten Sie bei der Bundesanstalt für Finanzdienstleistungsaufsicht (BaFin), Graurheindorfer Str. 108, 53117 Bonn, Telefon 0228 41080, <a href="https://www.bafin.de" target="_blank" rel="noopener noreferrer">www.bafin.de</a>.</p>
+
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">Online-Streitbeilegung</h2>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0">Die Europäische Kommission hat gemäß Richtlinie 2013/11/EU eine Plattform zur Online-Streitbeilegung (OS-Plattform) eingerichtet. Verbraucher können sie zur außergerichtlichen Beilegung von Streitigkeiten aus Online-Verträgen mit einem in der EU niedergelassenen Unternehmen nutzen: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">ec.europa.eu/consumers/odr</a>.</p>
+
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">Haftung für Inhalte</h2>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Die Inhalte dieser Website wurden mit Sorgfalt erstellt. Für Richtigkeit, Vollständigkeit und Aktualität kann jedoch keine Gewähr übernommen werden. Als Diensteanbieter bin ich für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich, jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen. Die Verpflichtung zur Entfernung oder Sperrung rechtswidriger Inhalte bleibt hiervon unberührt; eine Haftung ist erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0">Die Darstellungen auf dieser Website dienen der allgemeinen Information und stellen keine individuelle Anlage-, Rechts- oder Steuerberatung dar. Beispielrechnungen sind vereinfacht und keine Zusage künftiger Ergebnisse.</p>
+
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">Haftung für Links</h2>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0">Diese Website enthält Links zu externen Websites Dritter, auf deren Inhalte ich keinen Einfluss habe. Für diese fremden Inhalte kann keine Gewähr übernommen werden; verantwortlich ist stets der jeweilige Anbieter oder Betreiber. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft, rechtswidrige Inhalte waren nicht erkennbar. Eine permanente inhaltliche Kontrolle ist ohne konkrete Anhaltspunkte nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden solche Links unverzüglich entfernt.</p>
+
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">Urheberrecht</h2>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0">Die auf dieser Website erstellten Inhalte, Texte, Grafiken und das Logo unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit Inhalte nicht von mir erstellt wurden, werden die Urheberrechte Dritter beachtet und entsprechende Inhalte als solche gekennzeichnet.</p>
+
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">Nachhaltigkeitsrisiken bei Finanzprodukten (ESG)</h2>
+        <h3 style="font-size:17px;font-weight:700;margin:22px 0 8px">Was sind Nachhaltigkeitsrisiken?</h3>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Als Nachhaltigkeitsrisiken (ESG-Risiken) werden Ereignisse oder Bedingungen aus den Bereichen Umwelt (Environment), Soziales (Social) und Unternehmensführung (Governance) bezeichnet, deren Eintreten negative Auswirkungen auf den Wert einer Investition haben könnte. Diese Risiken können einzelne Unternehmen ebenso betreffen wie ganze Branchen oder Regionen.</p>
+        <div style="background:var(--surface-muted);border:1px solid var(--border-subtle);border-radius:14px;padding:22px 24px;margin-bottom:14px">
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:15.5px;color:var(--text-secondary);line-height:1.6">
+            <div><strong style="color:var(--text-primary)">Umwelt</strong> – Infolge des Klimawandels können vermehrt auftretende Extremwetterereignisse ein Risiko darstellen (physisches Risiko). Beispiel: Eine anhaltende Trockenperiode senkt die Pegel von Wasserstraßen so weit, dass der Warentransport beeinträchtigt wird.</div>
+            <div><strong style="color:var(--text-primary)">Soziales</strong> – Risiken können sich etwa aus der Nichteinhaltung arbeitsrechtlicher Standards oder des Gesundheitsschutzes ergeben.</div>
+            <div><strong style="color:var(--text-primary)">Unternehmensführung</strong> – Beispiele sind die Nichteinhaltung der Steuerehrlichkeit oder Korruption in Unternehmen.</div>
+          </div>
+        </div>
+        <h3 style="font-size:17px;font-weight:700;margin:22px 0 8px">Einbeziehung von Nachhaltigkeitsrisiken in die Beratung (Art. 3 Offenlegungs-VO)</h3>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Um Nachhaltigkeitsrisiken in der Beratung zu berücksichtigen, werden bei der Auswahl von Anbietern (Finanzmarktteilnehmern) und deren Finanzprodukten die von diesen bereitgestellten Informationen einbezogen. Anbieter, die erkennbar keine Strategie zur Einbeziehung von Nachhaltigkeitsrisiken in ihre Investitionsentscheidungen verfolgen, werden gegebenenfalls nicht angeboten. Im Beratungsgespräch wird gesondert dargestellt, wenn die Berücksichtigung von Nachhaltigkeitsrisiken erkennbare Vor- oder Nachteile für Sie mit sich bringt.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Über die Berücksichtigung von Nachhaltigkeitsrisiken bei seinen Investitionsentscheidungen informiert der jeweilige Anbieter in seinen vorvertraglichen Informationen. Fragen dazu können Sie jederzeit vor einem möglichen Abschluss ansprechen. Zur Bewertung werden ergänzend Informationen von Dienstleistern, Verbänden und spezialisierten Organisationen genutzt. Grundsätzlich wird auch mit Blick auf Nachhaltigkeitsrisiken eine möglichst breite Streuung der Anlage empfohlen.</p>
+        <h3 style="font-size:17px;font-weight:700;margin:22px 0 8px">Nachteilige Auswirkungen auf Nachhaltigkeitsfaktoren (Art. 4 Offenlegungs-VO)</h3>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Im Rahmen der Beratung werden die wichtigsten nachteiligen Auswirkungen von Investitionsentscheidungen auf Nachhaltigkeitsfaktoren berücksichtigt. Grundlage sind die von den Anbietern zur Verfügung gestellten Informationen zur Nachhaltigkeit des Unternehmens und des jeweiligen Finanzprodukts. Da diese Informationen derzeit noch im Aufbau und teilweise lückenhaft sind, kann die Berücksichtigung zurzeit nur eingeschränkt erfolgen.</p>
+        <h3 style="font-size:17px;font-weight:700;margin:22px 0 8px">Vergütungspolitik und Nachhaltigkeitsrisiken (Art. 5 Offenlegungs-VO)</h3>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0">Die Vergütung für die Vermittlung von Finanzprodukten wird grundsätzlich nicht von Nachhaltigkeitsrisiken beeinflusst. Es kann vorkommen, dass Anbieter die Berücksichtigung von Nachhaltigkeitsrisiken höher vergüten. Soweit dies dem Kundeninteresse nicht widerspricht, wird die höhere Vergütung angenommen.</p>
+
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">Haftungshinweis</h2>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0">Keine Gewähr für Vollständigkeit, Richtigkeit und Aktualität. Jegliche Haftung ist ausgeschlossen. Trotz sorgfältiger inhaltlicher Kontrolle wird keine Haftung für die Inhalte externer Links übernommen. Für den Inhalt verlinkter Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+
+        <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:48px;padding-top:22px;border-top:1px solid var(--border-subtle)">
+          <span style="font-size:14px;color:var(--text-muted)">Stand: Juli 2026</span>
+          <button onClick="{{ goDatenschutz }}" style="background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:14.5px;font-weight:600;color:var(--color-brand)">Zur Datenschutzerklärung →</button>
+        </div>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <!-- ================= DATENSCHUTZ ================= -->
+  <sc-if value="{{ isDatenschutz }}">
+  <div data-screen-label="Datenschutz" style="animation:pageIn .5s var(--ease-out) both">
+    <section style="padding:clamp(104px,11vw,150px) 0 clamp(56px,7vw,90px);background:var(--surface-muted);border-bottom:1px solid var(--border-subtle)">
+      <div style="max-width:860px;margin:0 auto;padding:0 24px">
+        <button onClick="{{ goStart }}" style="display:inline-flex;align-items:center;gap:8px;background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:14px;font-weight:600;color:var(--color-brand);margin-bottom:22px">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg>Zurück zur Startseite
+        </button>
+        <p style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.22em;color:var(--color-brand);margin:0 0 14px">RECHTLICHES</p>
+        <h1 style="font-size:clamp(32px,4.4vw,50px);font-weight:800;letter-spacing:-0.02em;line-height:1.06;margin:0 0 16px">Datenschutzerklärung</h1>
+        <p style="font-size:clamp(16px,1.4vw,18px);color:var(--text-secondary);line-height:1.65;margin:0;max-width:62ch">Wie ich mit Ihren Daten umgehe – welche erhoben werden, wofür, auf welcher Rechtsgrundlage und welche Rechte Sie haben.</p>
+      </div>
+    </section>
+
+    <section style="padding:clamp(48px,6vw,80px) 0 clamp(64px,8vw,104px)">
+      <div style="max-width:860px;margin:0 auto;padding:0 24px">
+
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:0 0 12px">1. Einleitung</h2>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Mit den folgenden Informationen möchte ich Ihnen als „betroffener Person" einen Überblick über die Verarbeitung Ihrer personenbezogenen Daten durch mich und über Ihre Rechte aus den Datenschutzgesetzen geben. Eine Nutzung dieser Internetseite ist grundsätzlich ohne Eingabe personenbezogener Daten möglich. Sofern Sie besondere Services über diese Internetseite in Anspruch nehmen möchten, könnte jedoch eine Verarbeitung personenbezogener Daten erforderlich werden. Ist die Verarbeitung personenbezogener Daten erforderlich und besteht dafür keine gesetzliche Grundlage, hole ich generell eine Einwilligung von Ihnen ein.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Die Verarbeitung personenbezogener Daten – beispielsweise Ihres Namens, Ihrer Anschrift oder Ihrer E-Mail-Adresse – erfolgt stets im Einklang mit der Datenschutz-Grundverordnung (DS-GVO) und den für FlowFinanz – Michael Heckel geltenden landesspezifischen Datenschutzbestimmungen. Mit dieser Datenschutzerklärung informiere ich Sie über Umfang und Zweck der von mir erhobenen, genutzten und verarbeiteten personenbezogenen Daten.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Als Verantwortlicher habe ich zahlreiche technische und organisatorische Maßnahmen umgesetzt, um einen möglichst lückenlosen Schutz der über diese Internetseite verarbeiteten personenbezogenen Daten sicherzustellen. Dennoch können internetbasierte Datenübertragungen grundsätzlich Sicherheitslücken aufweisen, sodass ein absoluter Schutz nicht gewährleistet werden kann. Aus diesem Grund steht es Ihnen frei, personenbezogene Daten auch auf alternativen Wegen – beispielsweise telefonisch oder per Post – zu übermitteln.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Auch Sie können einfache und leicht umzusetzende Maßnahmen ergreifen, um sich gegen den unbefugten Zugang Dritter zu Ihren Daten zu schützen. Daher einige Hinweise zum sicheren Umgang mit Ihren Daten:</p>
+        <div style="background:var(--surface-muted);border:1px solid var(--border-subtle);border-radius:14px;padding:22px 24px;margin-bottom:14px">
+          <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:8px;font-size:15.5px;color:var(--text-secondary);line-height:1.6">
+            <li>Schützen Sie Ihren Account (Login, Nutzer- oder Kundenkonto) und Ihr IT-System (Computer, Laptop, Tablet oder Mobilgerät) mit sicheren Passwörtern.</li>
+            <li>Nur Sie sollten Zugang zu den Passwörtern haben.</li>
+            <li>Nutzen Sie jedes Passwort immer nur für einen Account und nicht für verschiedene Webseiten, Anwendungen oder Online-Services.</li>
+            <li>Insbesondere bei öffentlich zugänglichen oder gemeinsam genutzten IT-Systemen sollten Sie sich nach jeder Anmeldung wieder abmelden.</li>
+            <li>Passwörter sollten aus mindestens 12 Zeichen bestehen und nicht leicht zu erraten sein: keine gängigen Wörter, nicht der eigene Name oder Namen von Verwandten, sondern Groß- und Kleinschreibung, Zahlen und Sonderzeichen.</li>
+          </ul>
+        </div>
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">2. Verantwortlicher</h2>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Verantwortlicher im Sinne der DS-GVO ist:</p>
+        <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:16px;padding:24px 26px;box-shadow:var(--shadow-sm);margin-bottom:14px">
+          <p style="font-size:15.5px;color:var(--text-secondary);line-height:1.65;margin:0">FlowFinanz – Michael Heckel<br>vertreten durch: Michael Heckel<br>Max-Reger-Str. 16<br>86633 Neuburg an der Donau<br>Tel.: <a href="tel:+491774843887">0177 4843887</a><br>Mail: <a href="mailto:info@flowfinanz.de">info@flowfinanz.de</a></p>
+        </div>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Bei Fragen zum Datenschutz wenden Sie sich bitte direkt an die oben genannten Kontaktdaten.</p>
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">3. Begriffsbestimmungen</h2>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Diese Datenschutzerklärung beruht auf den Begrifflichkeiten der Datenschutz-Grundverordnung (DS-GVO). Sie soll für die Öffentlichkeit ebenso wie für meine Kunden und Geschäftspartner einfach lesbar und verständlich sein. Deshalb vorab die verwendeten Begriffe:</p>
+        <div style="background:var(--surface-muted);border:1px solid var(--border-subtle);border-radius:14px;padding:22px 24px;margin-bottom:14px">
+          <div style="display:flex;flex-direction:column;gap:14px;font-size:15.5px;color:var(--text-secondary);line-height:1.62">
+            <div><strong style="color:var(--text-primary)">1. Personenbezogene Daten</strong><br>Alle Informationen, die sich auf eine identifizierte oder identifizierbare natürliche Person beziehen. Als identifizierbar gilt eine Person, die direkt oder indirekt – insbesondere mittels Zuordnung zu einer Kennung wie einem Namen, einer Kennnummer, Standortdaten, einer Online-Kennung oder zu einem oder mehreren besonderen Merkmalen, die Ausdruck der physischen, physiologischen, genetischen, psychischen, wirtschaftlichen, kulturellen oder sozialen Identität dieser Person sind – identifiziert werden kann.</div>
+            <div><strong style="color:var(--text-primary)">2. Betroffene Person</strong><br>Jede identifizierte oder identifizierbare natürliche Person, deren personenbezogene Daten vom Verantwortlichen verarbeitet werden.</div>
+            <div><strong style="color:var(--text-primary)">3. Verarbeitung</strong><br>Jeder mit oder ohne Hilfe automatisierter Verfahren ausgeführte Vorgang im Zusammenhang mit personenbezogenen Daten: das Erheben, Erfassen, die Organisation, das Ordnen, die Speicherung, die Anpassung oder Veränderung, das Auslesen, Abfragen, die Verwendung, die Offenlegung durch Übermittlung, Verbreitung oder eine andere Form der Bereitstellung, den Abgleich oder die Verknüpfung, die Einschränkung, das Löschen oder die Vernichtung.</div>
+            <div><strong style="color:var(--text-primary)">4. Einschränkung der Verarbeitung</strong><br>Die Markierung gespeicherter personenbezogener Daten mit dem Ziel, ihre künftige Verarbeitung einzuschränken.</div>
+            <div><strong style="color:var(--text-primary)">5. Profiling</strong><br>Jede Art der automatisierten Verarbeitung personenbezogener Daten, bei der diese Daten verwendet werden, um bestimmte persönliche Aspekte einer natürlichen Person zu bewerten – insbesondere Aspekte bezüglich Arbeitsleistung, wirtschaftlicher Lage, Gesundheit, persönlicher Vorlieben, Interessen, Zuverlässigkeit, Verhalten, Aufenthaltsort oder Ortswechsel – zu analysieren oder vorherzusagen.</div>
+            <div><strong style="color:var(--text-primary)">6. Pseudonymisierung</strong><br>Die Verarbeitung personenbezogener Daten in einer Weise, in der die Daten ohne Hinzuziehung zusätzlicher Informationen nicht mehr einer spezifischen betroffenen Person zugeordnet werden können, sofern diese zusätzlichen Informationen gesondert aufbewahrt werden und technischen und organisatorischen Maßnahmen unterliegen.</div>
+            <div><strong style="color:var(--text-primary)">7. Auftragsverarbeiter</strong><br>Eine natürliche oder juristische Person, Behörde, Einrichtung oder andere Stelle, die personenbezogene Daten im Auftrag des Verantwortlichen verarbeitet.</div>
+            <div><strong style="color:var(--text-primary)">8. Empfänger</strong><br>Eine natürliche oder juristische Person, Behörde, Einrichtung oder andere Stelle, der personenbezogene Daten offengelegt werden, unabhängig davon, ob es sich um einen Dritten handelt oder nicht. Behörden, die im Rahmen eines bestimmten Untersuchungsauftrags Daten erhalten, gelten nicht als Empfänger.</div>
+            <div><strong style="color:var(--text-primary)">9. Dritter</strong><br>Eine natürliche oder juristische Person, Behörde, Einrichtung oder andere Stelle außer der betroffenen Person, dem Verantwortlichen, dem Auftragsverarbeiter und den Personen, die unter unmittelbarer Verantwortung des Verantwortlichen oder Auftragsverarbeiters befugt sind, die Daten zu verarbeiten.</div>
+            <div><strong style="color:var(--text-primary)">10. Einwilligung</strong><br>Jede von der betroffenen Person freiwillig für den bestimmten Fall in informierter Weise und unmissverständlich abgegebene Willensbekundung in Form einer Erklärung oder einer sonstigen eindeutigen bestätigenden Handlung, mit der die betroffene Person zu verstehen gibt, dass sie mit der Verarbeitung der sie betreffenden personenbezogenen Daten einverstanden ist.</div>
+          </div>
+        </div>
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">4. Rechtsgrundlage der Verarbeitung</h2>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Art. 6 Abs. 1 lit. a DS-GVO (i. V. m. § 25 Abs. 1 TDDDG) dient als Rechtsgrundlage für Verarbeitungsvorgänge, bei denen ich eine Einwilligung für einen bestimmten Verarbeitungszweck einhole.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Ist die Verarbeitung personenbezogener Daten zur Erfüllung eines Vertrags erforderlich, dessen Vertragspartei Sie sind, so beruht die Verarbeitung auf Art. 6 Abs. 1 lit. b DS-GVO. Gleiches gilt für Verarbeitungsvorgänge, die zur Durchführung vorvertraglicher Maßnahmen erforderlich sind – etwa bei Anfragen zu meinen Leistungen.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Unterliege ich einer rechtlichen Verpflichtung, durch die eine Verarbeitung personenbezogener Daten erforderlich wird – beispielsweise zur Erfüllung steuerlicher Pflichten oder der Dokumentationspflichten nach § 61 VVG –, so basiert die Verarbeitung auf Art. 6 Abs. 1 lit. c DS-GVO.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">In seltenen Fällen könnte die Verarbeitung erforderlich werden, um lebenswichtige Interessen der betroffenen Person oder einer anderen natürlichen Person zu schützen. Dann würde die Verarbeitung auf Art. 6 Abs. 1 lit. d DS-GVO beruhen.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Letztlich können Verarbeitungsvorgänge auf Art. 6 Abs. 1 lit. f DS-GVO beruhen. Auf dieser Rechtsgrundlage basieren Verarbeitungen, die von keiner der vorgenannten Rechtsgrundlagen erfasst werden, wenn sie zur Wahrung eines berechtigten Interesses erforderlich sind, sofern die Interessen, Grundrechte und Grundfreiheiten des Betroffenen nicht überwiegen. Der Europäische Gesetzgeber vertrat insoweit die Auffassung, dass ein berechtigtes Interesse anzunehmen sein könnte, wenn Sie Kunde sind (Erwägungsgrund 47 Satz 2 DS-GVO).</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Mein Angebot richtet sich grundsätzlich an Erwachsene. Personen unter 16 Jahren dürfen ohne Zustimmung der Eltern oder Erziehungsberechtigten keine personenbezogenen Daten an mich übermitteln. Ich fordere keine personenbezogenen Daten von Kindern und Jugendlichen an, sammle diese nicht und gebe sie nicht an Dritte weiter.</p>
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">5. Übermittlung von Daten an Dritte</h2>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Eine Übermittlung Ihrer personenbezogenen Daten an Dritte zu anderen als den im Folgenden aufgeführten Zwecken findet nicht statt. Ich gebe Ihre personenbezogenen Daten nur an Dritte weiter, wenn:</p>
+        <div style="background:var(--surface-muted);border:1px solid var(--border-subtle);border-radius:14px;padding:22px 24px;margin-bottom:14px">
+          <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:8px;font-size:15.5px;color:var(--text-secondary);line-height:1.6">
+            <li>Sie mir Ihre ausdrückliche Einwilligung nach Art. 6 Abs. 1 lit. a DS-GVO erteilt haben,</li>
+            <li>die Weitergabe nach Art. 6 Abs. 1 lit. f DS-GVO zur Wahrung berechtigter Interessen zulässig ist und kein Grund zur Annahme besteht, dass Sie ein überwiegendes schutzwürdiges Interesse an der Nichtweitergabe haben,</li>
+            <li>für die Weitergabe nach Art. 6 Abs. 1 lit. c DS-GVO eine gesetzliche Verpflichtung besteht, sowie</li>
+            <li>dies gesetzlich zulässig und nach Art. 6 Abs. 1 lit. b DS-GVO für die Abwicklung von Vertragsverhältnissen mit Ihnen erforderlich ist.</li>
+          </ul>
+        </div>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Um Ihre Daten zu schützen und gegebenenfalls eine Datenübermittlung in Drittländer (außerhalb der EU bzw. des EWR) zu ermöglichen, habe ich Vereinbarungen zur Auftragsverarbeitung auf Grundlage der Standardvertragsklauseln der Europäischen Kommission abgeschlossen. Sofern die Standardvertragsklauseln nicht ausreichen, um ein adäquates Sicherheitsniveau herzustellen, kann Ihre Einwilligung gemäß Art. 49 Abs. 1 lit. a DS-GVO als Rechtsgrundlage für die Übermittlung dienen. Dies gilt nicht bei einer Datenübermittlung in Drittländer, für welche die Europäische Kommission einen Angemessenheitsbeschluss gemäß Art. 45 DS-GVO ausgestellt hat.</p>
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">6. Technik</h2>
+        <h3 style="font-size:17px;font-weight:700;margin:22px 0 8px">6.1 SSL/TLS-Verschlüsselung</h3>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Diese Seite nutzt zur Gewährleistung der Sicherheit der Datenverarbeitung und zum Schutz der Übertragung vertraulicher Inhalte – wie zum Beispiel Kontaktanfragen, die Sie an mich senden – eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass in der Adresszeile des Browsers statt „http://" ein <strong>„https://"</strong> steht, und am Schloss-Symbol in Ihrer Browserzeile. Ich setze diese Technologie ein, um Ihre übermittelten Daten zu schützen.</p>
+        <h3 style="font-size:17px;font-weight:700;margin:22px 0 8px">6.2 Hosting und Domain</h3>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Diese Website wird bei <strong>Vercel Inc.</strong>, 340 S Lemon Ave #4133, Walnut, CA 91789, USA gehostet. Die Domain wird über die <strong>IONOS SE</strong>, Elgendorfer Straße 57, 56410 Montabaur verwaltet. Beide Anbieter verarbeiten die beim Aufruf der Website anfallenden Daten als Auftragsverarbeiter auf Grundlage eines Vertrags nach Art. 28 DS-GVO.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DS-GVO – das berechtigte Interesse an einer sicheren, stabilen und effizienten Bereitstellung dieser Website. Bei Vercel kann eine Verarbeitung in den USA erfolgen; die Übermittlung ist über Standardvertragsklauseln nach Art. 46 Abs. 2 lit. c DS-GVO und die Zertifizierung nach dem EU-US Data Privacy Framework abgesichert.</p>
+        <h3 style="font-size:17px;font-weight:700;margin:22px 0 8px">6.3 Datenerfassung beim Besuch der Internetseite (Server-Logfiles)</h3>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Bei der lediglich informatorischen Nutzung dieser Webseite – also wenn Sie mir keine Informationen übermitteln – erhebe ich nur solche Daten, die Ihr Browser an den Server übermittelt (sogenannte „Server-Logfiles"). Erfasst werden können:</p>
+        <div style="background:var(--surface-muted);border:1px solid var(--border-subtle);border-radius:14px;padding:22px 24px;margin-bottom:14px">
+          <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:8px;font-size:15.5px;color:var(--text-secondary);line-height:1.6">
+            <li>verwendete Browsertypen und Versionen,</li>
+            <li>das vom zugreifenden System verwendete Betriebssystem,</li>
+            <li>die Internetseite, von welcher ein zugreifendes System auf diese Internetseite gelangt (sogenannter Referrer),</li>
+            <li>die Unterseiten, welche über ein zugreifendes System angesteuert werden,</li>
+            <li>Datum und Uhrzeit eines Zugriffs,</li>
+            <li>eine gekürzte Internet-Protokoll-Adresse (anonymisierte IP-Adresse) sowie</li>
+            <li>der Internet-Service-Provider des zugreifenden Systems.</li>
+          </ul>
+        </div>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Bei der Nutzung dieser allgemeinen Daten und Informationen ziehe ich keine Rückschlüsse auf Ihre Person. Diese Informationen werden benötigt, um die Inhalte der Internetseite korrekt auszuliefern, die Inhalte und die Werbung für diese zu optimieren, die dauerhafte Funktionsfähigkeit der IT-Systeme und der Technik der Internetseite zu gewährleisten sowie um Strafverfolgungsbehörden im Falle eines Cyberangriffs die zur Strafverfolgung notwendigen Informationen bereitzustellen.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Die erhobenen Daten werden einerseits statistisch und andererseits mit dem Ziel ausgewertet, Datenschutz und Datensicherheit zu erhöhen. Die anonymen Daten der Server-Logfiles werden getrennt von allen durch eine betroffene Person angegebenen personenbezogenen Daten gespeichert und nach maximal 30 Tagen gelöscht. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DS-GVO; das berechtigte Interesse folgt aus den oben aufgelisteten Zwecken.</p>
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">7. Cookies</h2>
+        <h3 style="font-size:17px;font-weight:700;margin:22px 0 8px">7.1 Allgemeines zu Cookies</h3>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Bei Cookies handelt es sich um kleine Dateien, die Ihr Browser automatisch erstellt und die auf Ihrem IT-System (Laptop, Tablet, Smartphone o. Ä.) gespeichert werden, wenn Sie diese Seite besuchen. In dem Cookie werden Informationen abgelegt, die sich jeweils im Zusammenhang mit dem spezifisch eingesetzten Endgerät ergeben. Dies bedeutet jedoch nicht, dass ich dadurch unmittelbar Kenntnis von Ihrer Identität erhalte.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Der Einsatz von Cookies dient dazu, die Nutzung des Angebots für Sie angenehmer zu gestalten. So werden sogenannte <strong>Session-Cookies</strong> eingesetzt, um zu erkennen, dass Sie einzelne Seiten bereits besucht haben; diese werden nach Verlassen der Seite automatisch gelöscht. Darüber hinaus werden zur Optimierung der Benutzerfreundlichkeit <strong>temporäre Cookies</strong> eingesetzt, die für einen festgelegten Zeitraum auf Ihrem Endgerät gespeichert bleiben, damit Eingaben und Einstellungen nicht erneut vorgenommen werden müssen.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Zum anderen werden Cookies eingesetzt, um die Nutzung der Webseite statistisch zu erfassen und das Angebot zum Zwecke der Optimierung auszuwerten. Die so gesetzten Cookies werden nach einer jeweils definierten Zeit automatisch gelöscht. Die jeweilige Speicherdauer können Sie den Einstellungen des eingesetzten Consent-Tools entnehmen.</p>
+        <h3 style="font-size:17px;font-weight:700;margin:22px 0 8px">7.2 Rechtsgrundlage für die Verwendung von Cookies</h3>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Die durch Cookies verarbeiteten Daten, die für die ordnungsgemäße Funktion der Webseite benötigt werden, sind zur Wahrung berechtigter Interessen nach Art. 6 Abs. 1 lit. f DS-GVO bzw. § 25 Abs. 2 Nr. 2 TDDDG erforderlich – dazu gehört auch die Speicherung Ihrer Cookie-Entscheidung.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Für alle anderen Cookies gilt, dass Sie über das Opt-in-Cookie-Banner Ihre Einwilligung im Sinne von Art. 6 Abs. 1 lit. a DS-GVO i. V. m. § 25 Abs. 1 TDDDG abgegeben haben. Alle nicht notwendigen Dienste – insbesondere Analyse, Marketing und externe Medien – werden erst nach Ihrer ausdrücklichen Einwilligung geladen. Solange Sie nicht zustimmen, findet keine Datenübermittlung an diese Anbieter statt. Ihre Einwilligung ist freiwillig und jederzeit ohne Angabe von Gründen widerrufbar; die bis dahin erfolgte Verarbeitung bleibt rechtmäßig.</p>
+        <h3 style="font-size:17px;font-weight:700;margin:22px 0 8px">7.3 Hinweise zur Vermeidung von Cookies in gängigen Browsern</h3>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Über die Einstellungen Ihres Browsers haben Sie jederzeit die Möglichkeit, Cookies zu löschen, nur ausgewählte Cookies zuzulassen oder Cookies vollständig zu deaktivieren; einzelne Funktionen der Website funktionieren dann möglicherweise nicht mehr vollständig. Weitere Informationen erhalten Sie auf den Support-Seiten der jeweiligen Anbieter:</p>
+        <div style="background:var(--surface-muted);border:1px solid var(--border-subtle);border-radius:14px;padding:22px 24px;margin-bottom:14px">
+          <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:8px;font-size:15.5px;color:var(--text-secondary);line-height:1.6">
+            <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer">Chrome</a></li>
+            <li><a href="https://support.apple.com/de-de/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">Safari</a></li>
+            <li><a href="https://support.mozilla.org/de/kb/cookies-und-website-daten-in-firefox-loschen" target="_blank" rel="noopener noreferrer">Firefox</a></li>
+            <li><a href="https://support.microsoft.com/de-de/microsoft-edge" target="_blank" rel="noopener noreferrer">Microsoft Edge</a></li>
+          </ul>
+        </div>
+        <button onClick="{{ reopenConsent }}" style="display:inline-flex;align-items:center;gap:9px;background:var(--color-brand-soft);border:1px solid var(--color-brand);color:var(--color-brand);border-radius:12px;padding:12px 20px;cursor:pointer;font-family:inherit;font-size:14.5px;font-weight:700">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"></path><path d="M21 3v5h-5"></path></svg>Cookie-Einstellungen ändern
+        </button>
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">8. Inhalte dieser Internetseite</h2>
+        <h3 style="font-size:17px;font-weight:700;margin:22px 0 8px">8.1 Datenverarbeitung zur Vertragsabwicklung</h3>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Gemäß Art. 6 Abs. 1 lit. b DS-GVO werden personenbezogene Daten erhoben und verarbeitet, wenn Sie mir diese zur Durchführung eines Vertrages mitteilen. Welche Daten erhoben werden, ist aus den jeweiligen Eingabeformularen ersichtlich. Ich speichere und verwende die von Ihnen mitgeteilten Daten zur Vertragsabwicklung. Nach vollständiger Abwicklung des Vertrages werden Ihre Daten unter Berücksichtigung steuer- und handelsrechtlicher Aufbewahrungsfristen gesperrt und nach Ablauf dieser Fristen gelöscht, sofern Sie einer weiteren Nutzung nicht ausdrücklich eingewilligt haben oder eine gesetzlich erlaubte weitere Datenverwendung vorbehalten wurde.</p>
+        <h3 style="font-size:17px;font-weight:700;margin:22px 0 8px">8.2 Kontaktaufnahme / Kontaktformular</h3>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Im Rahmen der Kontaktaufnahme (z. B. per Kontaktformular oder E-Mail) werden personenbezogene Daten erhoben – Name, E-Mail-Adresse, ggf. Telefonnummer und Ihre Nachricht. Welche Daten im Falle der Nutzung eines Kontaktformulars erhoben werden, ist aus dem jeweiligen Formular ersichtlich. Diese Daten werden ausschließlich zum Zwecke der Beantwortung Ihres Anliegens bzw. für die Kontaktaufnahme und die damit verbundene technische Administration gespeichert und verwendet und ohne Ihre Einwilligung nicht weitergegeben.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Rechtsgrundlage ist mein berechtigtes Interesse an der Beantwortung Ihres Anliegens gemäß Art. 6 Abs. 1 lit. f DS-GVO. Zielt Ihre Kontaktaufnahme auf den Abschluss eines Vertrages ab, ist zusätzliche Rechtsgrundlage Art. 6 Abs. 1 lit. b DS-GVO. Ihre Daten werden nach abschließender Bearbeitung Ihrer Anfrage gelöscht, sofern der Löschung keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
+        <h3 style="font-size:17px;font-weight:700;margin:22px 0 8px">8.3 Telefon und WhatsApp</h3>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Bei telefonischer Kontaktaufnahme werden Ihre Rufnummer und die Gesprächsinhalte verarbeitet, soweit dies zur Bearbeitung Ihres Anliegens erforderlich ist. Nutzen Sie den WhatsApp-Kontakt, erfolgt die Kommunikation über die <strong>WhatsApp Ireland Limited</strong>, Merrion Road, Dublin 4, Irland; dabei werden Ihre Rufnummer und Metadaten an WhatsApp übermittelt. Auf diese Verarbeitung habe ich keinen Einfluss – bitte nutzen Sie E-Mail oder Telefon, wenn Sie das nicht wünschen. Ein Klick auf den WhatsApp-Kontakt gilt als Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DS-GVO. Sensible Gesundheits- oder Finanzdaten übermitteln Sie bitte nicht per WhatsApp.</p>
+        <h3 style="font-size:17px;font-weight:700;margin:22px 0 8px">8.4 Online-Terminbuchung</h3>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Für die Buchung von Erstgesprächen nutze ich einen externen Terminbuchungsdienst. Dabei werden Ihr Name, Ihre E-Mail-Adresse, der gewählte Termin, Ihre Zeitzone und optionale Angaben aus dem Buchungsformular verarbeitet, um den Termin zu vereinbaren, zu bestätigen und daran zu erinnern. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DS-GVO. Das Buchungswidget wird erst nach Ihrer Einwilligung geladen. Bei Anbietern mit Sitz in den USA erfolgt die Übermittlung auf Grundlage von Standardvertragsklauseln bzw. einer Zertifizierung nach dem EU-US Data Privacy Framework.</p>
+        <h3 style="font-size:17px;font-weight:700;margin:22px 0 8px">8.5 Bewerbungen</h3>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Ich erhebe und verarbeite die personenbezogenen Daten von Bewerbern zum Zwecke der Abwicklung des Bewerbungsverfahrens, auch auf elektronischem Wege – etwa per E-Mail. Schließe ich einen Arbeits- oder Dienstvertrag mit einem Bewerber, werden die übermittelten Daten zum Zwecke der Abwicklung des Beschäftigungsverhältnisses unter Beachtung der gesetzlichen Vorschriften gespeichert. Kommt kein Vertrag zustande, werden die Bewerbungsunterlagen zwei Monate nach Bekanntgabe der Absageentscheidung gelöscht, sofern der Löschung keine sonstigen berechtigten Interessen entgegenstehen – etwa eine Beweispflicht in einem Verfahren nach dem Allgemeinen Gleichbehandlungsgesetz (AGG). Rechtsgrundlage ist Art. 88 DS-GVO i. V. m. § 26 Abs. 1 BDSG.</p>
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">9. Beratung und Vermittlung</h2>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Im Rahmen von Beratung, Vermittlung und Betreuung verarbeite ich die Daten, die für eine bedarfsgerechte Empfehlung und die Vertragsabwicklung erforderlich sind – darunter Stammdaten, Angaben zu Einkommen, Vermögen, bestehenden Verträgen, Familien- und Berufssituation sowie Risikoinformationen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DS-GVO (Vertragsanbahnung und -durchführung) sowie Art. 6 Abs. 1 lit. c DS-GVO für gesetzliche Dokumentations- und Beratungspflichten nach § 61 VVG und § 34d GewO.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Soweit im Einzelfall <strong>Gesundheitsdaten</strong> erforderlich sind – etwa bei Berufsunfähigkeits-, Kranken- oder Lebensversicherungen – erfolgt die Verarbeitung ausschließlich auf Grundlage Ihrer ausdrücklichen Einwilligung nach Art. 9 Abs. 2 lit. a DS-GVO. Diese Einwilligung wird gesondert eingeholt und kann jederzeit widerrufen werden.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Eine Weitergabe an Versicherer, Produktgeber, Banken oder Maklerpools erfolgt nur, soweit dies für die Vermittlung des von Ihnen gewünschten Vertrags erforderlich ist. Beratungsdokumentationen werden entsprechend den gesetzlichen Aufbewahrungspflichten grundsätzlich bis zu fünf Jahre nach Ende des Beratungsjahres, Buchungsbelege nach § 147 AO bzw. § 257 HGB bis zu zehn Jahre aufbewahrt und danach gelöscht.</p>
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">10. Newsletterversand</h2>
+        <h3 style="font-size:17px;font-weight:700;margin:22px 0 8px">10.1 Anmeldung zum Newsletter</h3>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Für den Newsletter benötige ich Ihre E-Mail-Adresse sowie eine Bestätigung, dass Sie mit dem Empfang einverstanden sind. Die Anmeldung erfolgt im <strong>Double-Opt-in-Verfahren</strong>: Nach der Eintragung erhalten Sie eine E-Mail mit einem Bestätigungslink. Erst danach werden Sie in die Empfängerliste aufgenommen. Anmeldezeitpunkt, Bestätigungszeitpunkt und IP-Adresse werden zum Nachweis der Einwilligung protokolliert.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Der Versand erfolgt über einen E-Mail-Marketing-Dienstleister, der als Auftragsverarbeiter nach Art. 28 DS-GVO tätig ist und dabei auch Öffnungs- und Klickraten auswerten kann. Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DS-GVO. Sie können den Newsletter jederzeit über den Abmeldelink in jeder E-Mail oder per Nachricht an <a href="mailto:info@flowfinanz.de">info@flowfinanz.de</a> abbestellen; Ihre Daten werden dann aus der Empfängerliste gelöscht.</p>
+        <h3 style="font-size:17px;font-weight:700;margin:22px 0 8px">10.2 Newsletterversand an Bestandskunden</h3>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Wenn Sie mir Ihre E-Mail-Adresse im Rahmen einer Beratung oder Vermittlung zur Verfügung gestellt haben, behalte ich mir vor, Ihnen regelmäßig Informationen zu ähnlichen Leistungen per E-Mail zuzusenden. Hierfür ist gemäß § 7 Abs. 3 UWG keine gesonderte Einwilligung erforderlich; die Datenverarbeitung erfolgt insoweit allein auf Basis meines berechtigten Interesses an personalisierter Direktwerbung gemäß Art. 6 Abs. 1 lit. f DS-GVO. Haben Sie der Nutzung Ihrer E-Mail-Adresse zu diesem Zweck anfänglich widersprochen, findet kein Mailversand statt. Sie sind berechtigt, der Nutzung Ihrer E-Mail-Adresse zu Werbezwecken jederzeit mit Wirkung für die Zukunft zu widersprechen; hierfür fallen für Sie lediglich Übermittlungskosten nach den Basistarifen an. Nach Eingang Ihres Widerspruchs wird die Nutzung unverzüglich eingestellt.</p>
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">11. Analyse, Reichweitenmessung und Werbung</h2>
+        <h3 style="font-size:17px;font-weight:700;margin:22px 0 8px">11.1 Google Analytics 4</h3>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Nach Ihrer Einwilligung nutze ich Google Analytics 4 der <strong>Google Ireland Limited</strong>, Gordon House, Barrow Street, Dublin 4, Irland. Der Dienst analysiert Ihr Nutzungsverhalten – etwa aufgerufene Seiten, Verweildauer, Herkunftsquelle, verwendetes Gerät und ungefähre Region – um die Website zu verbessern. Die IP-Adresse wird vor jeder Speicherung gekürzt, eine direkte Identifizierung Ihrer Person ist nicht vorgesehen.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DS-GVO in Verbindung mit § 25 Abs. 1 TDDDG. Die Daten können auch an Google LLC in den USA übermittelt werden; abgesichert über Standardvertragsklauseln und die Zertifizierung nach dem EU-US Data Privacy Framework. Nutzungsdaten werden standardmäßig nach 14 Monaten gelöscht.</p>
+        <h3 style="font-size:17px;font-weight:700;margin:22px 0 8px">11.2 Google Ads und Conversion-Tracking</h3>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Nach Ihrer Einwilligung wird Google Ads mit Conversion-Tracking eingesetzt, um zu messen, welche Anzeigen zu einer Kontaktanfrage oder Terminbuchung führen, und um Anzeigen künftig zielgerichteter auszuliefern. Dazu wird ein Cookie gesetzt, das Ihr Verhalten nach dem Klick auf eine Anzeige einem Werbekonto zuordnet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DS-GVO in Verbindung mit § 25 Abs. 1 TDDDG.</p>
+        <h3 style="font-size:17px;font-weight:700;margin:22px 0 8px">11.3 Meta-Pixel (Facebook und Instagram)</h3>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Nach Ihrer Einwilligung nutze ich den Meta-Pixel der <strong>Meta Platforms Ireland Limited</strong>, Merrion Road, Dublin 4, Irland, um den Erfolg von Werbekampagnen zu messen und Ihnen bei Facebook und Instagram passende Anzeigen zu zeigen. Dabei werden Ihre Interaktionen auf dieser Website an Meta übermittelt und – falls Sie dort eingeloggt sind – Ihrem Konto zugeordnet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DS-GVO in Verbindung mit § 25 Abs. 1 TDDDG. Zwischen mir und Meta besteht insoweit eine gemeinsame Verantwortlichkeit nach Art. 26 DS-GVO für die Erhebung und Weiterleitung der Daten. Eine Übermittlung in die USA ist über Standardvertragsklauseln und das EU-US Data Privacy Framework abgesichert.</p>
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">12. Aktivitäten in sozialen Netzwerken</h2>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Damit ich mit Ihnen auch in sozialen Netzwerken kommunizieren und Sie über meine Leistungen informieren kann, bin ich dort mit eigenen Seiten vertreten. Wenn Sie eine dieser Social-Media-Seiten besuchen, bin ich hinsichtlich der dadurch ausgelösten Verarbeitungsvorgänge im Sinne des Art. 26 DS-GVO gemeinsam mit dem Anbieter der jeweiligen Plattform verantwortlich. Ich bin dabei nicht der originäre Anbieter dieser Seiten, sondern nutze diese lediglich im Rahmen der von den Anbietern gebotenen Möglichkeiten.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Daher weise ich vorsorglich darauf hin, dass Ihre Daten möglicherweise auch außerhalb der Europäischen Union bzw. des Europäischen Wirtschaftsraums verarbeitet werden. Eine Nutzung kann mit Datenschutzrisiken für Sie verbunden sein, da die Wahrung Ihrer Rechte – z. B. auf Auskunft, Löschung oder Widerspruch – erschwert sein könnte und die Verarbeitung in den sozialen Netzwerken häufig direkt zu Werbezwecken oder zur Analyse des Nutzerverhaltens erfolgt, ohne dass dies von mir beeinflusst werden kann. Werden durch den Anbieter Nutzungsprofile angelegt, werden dabei häufig Cookies eingesetzt bzw. das Nutzungsverhalten Ihrem eigenen Mitgliedsprofil zugeordnet.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Die beschriebenen Verarbeitungsvorgänge erfolgen gemäß Art. 6 Abs. 1 lit. f DS-GVO auf Basis meines berechtigten Interesses und des berechtigten Interesses des jeweiligen Anbieters, um mit Ihnen in zeitgemäßer Weise kommunizieren bzw. Sie über meine Leistungen informieren zu können. Müssen Sie bei den jeweiligen Anbietern als Nutzer eine Einwilligung zur Datenverarbeitung abgeben, bezieht sich die Rechtsgrundlage auf Art. 6 Abs. 1 lit. a DS-GVO i. V. m. Art. 7 DS-GVO.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Da ich keinen Zugriff auf die Datenbestände der Anbieter habe, weise ich darauf hin, dass Sie Ihre Rechte (z. B. auf Auskunft, Berichtigung, Löschung) am besten direkt beim jeweiligen Anbieter geltend machen. Weiterführende Informationen zur Verarbeitung Ihrer Daten in den von mir genutzten sozialen Netzwerken:</p>
+        <div style="background:var(--surface-muted);border:1px solid var(--border-subtle);border-radius:14px;padding:22px 24px;margin-bottom:14px">
+          <div style="display:flex;flex-direction:column;gap:14px;font-size:15.5px;color:var(--text-secondary);line-height:1.62">
+            <div><strong style="color:var(--text-primary)">12.1 Instagram</strong><br>(Mit-)Verantwortlicher für die Datenverarbeitung in Europa: Meta Platforms Ireland Ltd., 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland. Datenrichtlinie: <a href="https://instagram.com/legal/privacy/" target="_blank" rel="noopener noreferrer">instagram.com/legal/privacy</a></div>
+            <div><strong style="color:var(--text-primary)">12.2 Facebook</strong><br>(Mit-)Verantwortlicher für die Datenverarbeitung in Europa: Meta Platforms Ireland Ltd., 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland. Datenrichtlinie: <a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener noreferrer">facebook.com/privacy/policy</a></div>
+            <div><strong style="color:var(--text-primary)">12.3 LinkedIn</strong><br>(Mit-)Verantwortlicher für die Datenverarbeitung in Europa: LinkedIn Ireland Unlimited Company, Wilton Plaza, Wilton Place, Dublin 2, Irland. Datenschutzerklärung: <a href="https://de.linkedin.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">linkedin.com/legal/privacy-policy</a></div>
+            <div><strong style="color:var(--text-primary)">12.4 X (vormals Twitter)</strong><br>(Mit-)Verantwortlicher für die Datenverarbeitung in Europa: Twitter International Unlimited Company, One Cumberland Place, Fenian Street, Dublin 2, D02 AX07, Irland. Datenschutzerklärung: <a href="https://x.com/de/privacy" target="_blank" rel="noopener noreferrer">x.com/de/privacy</a> · Auskunft über Ihre Daten: <a href="https://x.com/settings/your_twitter_data" target="_blank" rel="noopener noreferrer">x.com/settings/your_twitter_data</a></div>
+            <div><strong style="color:var(--text-primary)">12.5 YouTube</strong><br>(Mit-)Verantwortlicher für die Datenverarbeitung in Europa: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Datenschutzerklärung: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a></div>
+            <div><strong style="color:var(--text-primary)">12.6 TikTok</strong><br>(Mit-)Verantwortlicher für die Datenverarbeitung in Europa: TikTok Technology Limited, 10 Earlsfort Terrace, Dublin, D02 T380, Irland. Datenschutzerklärung: <a href="https://www.tiktok.com/legal/privacy-policy-eea" target="_blank" rel="noopener noreferrer">tiktok.com/legal/privacy-policy-eea</a></div>
+          </div>
+        </div>
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">13. Plugins und andere Dienste</h2>
+        <h3 style="font-size:17px;font-weight:700;margin:22px 0 8px">13.1 YouTube und Vimeo</h3>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Eingebettete Videos werden erst nach Ihrer Einwilligung geladen. Beim Start eines Videos wird eine Verbindung zu den Servern von <strong>Google Ireland Limited</strong> (YouTube) bzw. <strong>Vimeo Inc.</strong>, 330 West 34th Street, New York, USA aufgebaut. Der jeweilige Anbieter erfährt dabei, welche Seite Sie besucht haben, und kann Ihre IP-Adresse sowie Nutzungsdaten verarbeiten. YouTube-Videos werden im erweiterten Datenschutzmodus eingebettet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DS-GVO in Verbindung mit § 25 Abs. 1 TDDDG.</p>
+        <h3 style="font-size:17px;font-weight:700;margin:22px 0 8px">13.2 Google Maps</h3>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Zur Anzeige des Standorts nutze ich Google Maps der <strong>Google Ireland Limited</strong>. Die Karte wird erst nach Ihrer Einwilligung geladen; bis dahin sehen Sie eine statische Vorschau. Beim Laden werden Ihre IP-Adresse und Nutzungsdaten an Google übermittelt, ggf. auch in die USA. Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DS-GVO in Verbindung mit § 25 Abs. 1 TDDDG.</p>
+        <h3 style="font-size:17px;font-weight:700;margin:22px 0 8px">13.3 Videoberatung und Online-Meetings</h3>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Für Telefonkonferenzen, Online-Meetings und Videoberatungen (nachfolgend „Online-Meetings") nutze ich <strong>Zoom</strong> der Zoom Communications, Inc., 55 Almaden Blvd, Suite 600, San Jose, USA, bzw. <strong>Google Meet</strong> der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Der Umfang der verarbeiteten Daten hängt davon ab, welche Angaben Sie vor bzw. bei der Teilnahme machen. Gegenstand der Verarbeitung können sein:</p>
+        <div style="background:var(--surface-muted);border:1px solid var(--border-subtle);border-radius:14px;padding:22px 24px;margin-bottom:14px">
+          <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:8px;font-size:15.5px;color:var(--text-secondary);line-height:1.6">
+            <li>Angaben zum Benutzer wie Vorname, Nachname, Telefonnummer (optional), E-Mail-Adresse, Passwort, Profilbild (optional),</li>
+            <li>Meeting-Metadaten wie Thema, Beschreibung (optional), Teilnehmer-IP-Adressen, Geräte- und Hardware-Informationen,</li>
+            <li>bei Aufzeichnungen (optional) alle Video-, Audio- und Präsentationsaufnahmen sowie Textdateien des Meeting-Chats,</li>
+            <li>bei Einwahl per Telefon Angaben zur eingehenden und ausgehenden Rufnummer, Ländername, Start- und Endzeit sowie ggf. weitere Verbindungsdaten.</li>
+          </ul>
+        </div>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Um die Anzeige von Video und die Wiedergabe von Audio zu ermöglichen, werden während der Dauer des Meetings die Daten vom Mikrofon und ggf. von der Kamera Ihres Endgeräts verarbeitet. Sie können Kamera und Mikrofon jederzeit selbst abschalten bzw. stummstellen. Texteingaben in Chat- oder Fragefunktionen werden verarbeitet, um sie im Meeting anzuzeigen und ggf. zu protokollieren.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DS-GVO. Rechtsgrundlage für den Einsatz im Rahmen bestehender oder anzubahnender Vertragsbeziehungen ist Art. 6 Abs. 1 lit. b DS-GVO. In allen übrigen Fällen ist Rechtsgrundlage Art. 6 Abs. 1 lit. f DS-GVO – mein Interesse an der effektiven Durchführung von Online-Meetings.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Wenn ein Online-Meeting aufgezeichnet werden soll, teile ich Ihnen das vor Beginn mit und bitte Sie – soweit erforderlich – um Ihre Zustimmung. Sollten Sie dies nicht wünschen, können Sie das Meeting verlassen. Ihre Einwilligung in die Aufzeichnung können Sie jederzeit widerrufen; die Aufzeichnung wird dann gelöscht.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Die Anbieter erhalten notwendigerweise Kenntnis von den genannten Daten, soweit dies im Rahmen des jeweiligen Auftragsverarbeitungsvertrages (Art. 28 DS-GVO) vorgesehen ist – insbesondere zum Zweck der Bereitstellung, Optimierung und Absicherung des Dienstes. Eine Verarbeitung in den USA und damit in einem Drittland ist nicht ausgeschlossen; als Schutzmaßnahme wurden die EU-Standardvertragsklauseln (Art. 46 Abs. 2 und 3 DS-GVO) abgeschlossen. Die Daten sind während des Transports über das Internet verschlüsselt. Weitere Informationen: <a href="https://explore.zoom.us/de/privacy/" target="_blank" rel="noopener noreferrer">Zoom</a> · <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google</a>.</p>
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">14. Ihre Rechte als betroffene Person</h2>
+        <div style="background:var(--surface-muted);border:1px solid var(--border-subtle);border-radius:14px;padding:22px 24px;margin-bottom:14px">
+          <div style="display:flex;flex-direction:column;gap:14px;font-size:15.5px;color:var(--text-secondary);line-height:1.62">
+            <div><strong style="color:var(--text-primary)">14.1 Recht auf Bestätigung</strong><br>Sie haben das Recht, eine Bestätigung darüber zu verlangen, ob Sie betreffende personenbezogene Daten verarbeitet werden.</div>
+            <div><strong style="color:var(--text-primary)">14.2 Recht auf Auskunft (Art. 15 DS-GVO)</strong><br>Sie haben das Recht, jederzeit unentgeltliche Auskunft über die zu Ihrer Person gespeicherten personenbezogenen Daten sowie eine Kopie dieser Daten nach Maßgabe der gesetzlichen Bestimmungen zu erhalten.</div>
+            <div><strong style="color:var(--text-primary)">14.3 Recht auf Berichtigung (Art. 16 DS-GVO)</strong><br>Sie haben das Recht, die Berichtigung unrichtiger personenbezogener Daten zu verlangen. Ferner steht Ihnen das Recht zu, unter Berücksichtigung der Zwecke der Verarbeitung die Vervollständigung unvollständiger Daten zu verlangen.</div>
+            <div><strong style="color:var(--text-primary)">14.4 Löschung (Art. 17 DS-GVO)</strong><br>Sie haben das Recht zu verlangen, dass die Sie betreffenden personenbezogenen Daten unverzüglich gelöscht werden, sofern einer der gesetzlich vorgesehenen Gründe zutrifft und soweit die Verarbeitung bzw. Speicherung nicht erforderlich ist.</div>
+            <div><strong style="color:var(--text-primary)">14.5 Einschränkung der Verarbeitung (Art. 18 DS-GVO)</strong><br>Sie haben das Recht, die Einschränkung der Verarbeitung zu verlangen, wenn eine der gesetzlichen Voraussetzungen gegeben ist.</div>
+            <div><strong style="color:var(--text-primary)">14.6 Datenübertragbarkeit (Art. 20 DS-GVO)</strong><br>Sie haben das Recht, die Sie betreffenden personenbezogenen Daten, welche Sie mir bereitgestellt haben, in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten und diese Daten einem anderen Verantwortlichen ohne Behinderung zu übermitteln, sofern die Verarbeitung auf einer Einwilligung gemäß Art. 6 Abs. 1 lit. a bzw. Art. 9 Abs. 2 lit. a DS-GVO oder auf einem Vertrag gemäß Art. 6 Abs. 1 lit. b DS-GVO beruht und mithilfe automatisierter Verfahren erfolgt. Ferner haben Sie das Recht zu erwirken, dass die Daten direkt von einem Verantwortlichen an einen anderen übermittelt werden, soweit dies technisch machbar ist und Rechte und Freiheiten anderer Personen nicht beeinträchtigt werden.</div>
+            <div><strong style="color:var(--text-primary)">14.7 Widerspruch (Art. 21 DS-GVO)</strong><br>Sie haben das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit gegen die Verarbeitung Sie betreffender personenbezogener Daten, die aufgrund von Art. 6 Abs. 1 lit. e oder f DS-GVO erfolgt, Widerspruch einzulegen. Dies gilt auch für ein darauf gestütztes Profiling. Legen Sie Widerspruch ein, verarbeite ich Ihre Daten nicht mehr, es sei denn, ich kann zwingende berechtigte Gründe nachweisen, die Ihre Interessen, Rechte und Freiheiten überwiegen, oder die Verarbeitung dient der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen. Gegen die Verarbeitung zum Zwecke der Direktwerbung – einschließlich eines damit verbundenen Profilings – können Sie jederzeit Widerspruch einlegen; die Daten werden dann nicht mehr für diese Zwecke verarbeitet.</div>
+            <div><strong style="color:var(--text-primary)">14.8 Widerruf einer datenschutzrechtlichen Einwilligung</strong><br>Sie haben das Recht, eine Einwilligung zur Verarbeitung personenbezogener Daten jederzeit mit Wirkung für die Zukunft zu widerrufen. Die bis dahin erfolgte Verarbeitung bleibt rechtmäßig.</div>
+            <div><strong style="color:var(--text-primary)">14.9 Beschwerde bei einer Aufsichtsbehörde</strong><br>Sie haben das Recht, sich bei einer für den Datenschutz zuständigen Aufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten zu beschweren (Art. 77 DS-GVO). Zuständig ist das Bayerische Landesamt für Datenschutzaufsicht (BayLDA), Promenade 18, 91522 Ansbach.</div>
+          </div>
+        </div>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Zur Ausübung Ihrer Rechte genügt eine Nachricht an <a href="mailto:info@flowfinanz.de">info@flowfinanz.de</a>.</p>
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">15. Routinemäßige Speicherung, Löschung und Sperrung</h2>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Ich verarbeite und speichere Ihre personenbezogenen Daten nur für den Zeitraum, der zur Erreichung des Speicherungszwecks erforderlich ist, oder sofern dies durch Rechtsvorschriften vorgesehen wurde. Entfällt der Speicherungszweck oder läuft eine vorgeschriebene Speicherfrist ab, werden die personenbezogenen Daten routinemäßig und entsprechend den gesetzlichen Vorschriften gesperrt oder gelöscht.</p>
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">16. Dauer der Speicherung</h2>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Kriterium für die Dauer der Speicherung personenbezogener Daten ist die jeweilige gesetzliche Aufbewahrungsfrist. Nach Ablauf der Frist werden die entsprechenden Daten routinemäßig gelöscht, sofern sie nicht mehr zur Vertragserfüllung oder Vertragsanbahnung erforderlich sind. Für Beratungsdokumentationen und Buchungsbelege gelten die in Abschnitt 9 genannten Fristen.</p>
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">17. Datensicherheit und automatisierte Entscheidungen</h2>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Neben der SSL-/TLS-Verschlüsselung setze ich technische und organisatorische Maßnahmen ein, um Ihre Daten gegen Verlust, Manipulation und unberechtigten Zugriff zu schützen.</p>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Eine automatisierte Entscheidungsfindung einschließlich Profiling nach Art. 22 DS-GVO findet nicht statt. Empfehlungen entstehen immer durch persönliche fachliche Bewertung.</p>
+        <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">18. Aktualität und Änderung dieser Datenschutzerklärung</h2>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Diese Datenschutzerklärung ist aktuell gültig und hat den Stand: Juli 2026. Durch die Weiterentwicklung dieser Internetseite und meiner Angebote oder aufgrund geänderter gesetzlicher beziehungsweise behördlicher Vorgaben kann es notwendig werden, diese Datenschutzerklärung zu ändern. Die jeweils aktuelle Fassung kann jederzeit auf dieser Seite abgerufen und ausgedruckt werden.</p>
+
+        <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:48px;padding-top:22px;border-top:1px solid var(--border-subtle)">
+          <span style="font-size:14px;color:var(--text-muted)">Stand: Juli 2026</span>
+          <button onClick="{{ goImpressum }}" style="background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:14.5px;font-weight:600;color:var(--color-brand)">Zum Impressum →</button>
+        </div>
+      </div>
+    </section>
+  </div>
+  </sc-if>
   </main>
 
   <!-- ================= FOOTER ================= -->
@@ -1268,27 +1655,61 @@
           <div style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,.5);margin-bottom:16px">Kontakt</div>
           <div style="display:flex;flex-direction:column;gap:12px">
             <a href="mailto:{{ contactEmail }}" style="color:rgba(255,255,255,.82);font-size:14.5px">{{ contactEmail }}</a>
-            <span style="color:rgba(255,255,255,.6);font-size:14.5px;line-height:1.5">Längenmühlweg 17<br>86633 Neuburg an der Donau</span>
+            <a href="tel:+491774843887" style="color:rgba(255,255,255,.82);font-size:14.5px">0177 4843887</a>
+            <span style="color:rgba(255,255,255,.6);font-size:14.5px;line-height:1.5">Max-Reger-Str. 16<br>86633 Neuburg an der Donau</span>
+          </div>
+          <div style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,.5);margin:26px 0 14px">Rechtliches</div>
+          <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+            <button onClick="{{ goImpressum }}" style="background:none;border:none;cursor:pointer;color:rgba(255,255,255,.82);font-size:14.5px;padding:0;font-family:inherit" style-hover="color:#fff">Impressum</button>
+            <button onClick="{{ goDatenschutz }}" style="background:none;border:none;cursor:pointer;color:rgba(255,255,255,.82);font-size:14.5px;padding:0;font-family:inherit" style-hover="color:#fff">Datenschutz</button>
+            <button onClick="{{ reopenConsent }}" style="background:none;border:none;cursor:pointer;color:rgba(255,255,255,.82);font-size:14.5px;padding:0;font-family:inherit" style-hover="color:#fff">Cookie-Einstellungen</button>
           </div>
         </div>
       </div>
       <div style="border-top:1px solid rgba(255,255,255,.12);margin-top:44px;padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
-        <span style="font-size:12.5px;color:rgba(255,255,255,.45)">© 2026 Heckel Consulting · Michael Heckel</span>
+        <span style="font-size:12.5px;color:rgba(255,255,255,.45)">© 2026 FlowFinanz · Michael Heckel · Versicherungsmakler § 34d GewO · Reg.-Nr. D-N6E0-J205X-41</span>
         <span style="font-size:12.5px;color:rgba(255,255,255,.45);max-width:60ch;line-height:1.5">Hinweis: Diese Website stellt keine Anlage- oder Steuerberatung im rechtlichen Sinne dar. Beispielrechnungen sind vereinfacht; jede Empfehlung erfolgt individuell.</span>
       </div>
     </div>
   </footer>
 
+  <!-- ================= CONSENT BANNER ================= -->
+  <sc-if value="{{ showConsent }}">
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:9000;padding:16px;display:flex;justify-content:center;pointer-events:none;animation:pageIn .4s var(--ease-out) both">
+    <div style="pointer-events:auto;width:100%;max-width:940px;background:#fff;border:1px solid var(--border-subtle);border-radius:18px;box-shadow:0 24px 70px rgba(11,15,22,.22);padding:24px 26px">
+      <div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:18px">
+        <span style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;background:var(--color-brand-soft);color:var(--color-brand)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 3 3 0 0 1-4-4 3 3 0 0 1-3-3 3 3 0 0 1-3-3Z"></path><path d="M8.5 9.5h.01M15 14h.01M9.5 15.5h.01"></path></svg></span>
+        <div>
+          <div style="font-size:17px;font-weight:800;letter-spacing:-0.01em;margin-bottom:6px">Datenschutz-Einstellungen</div>
+          <p style="font-size:14.5px;color:var(--text-secondary);line-height:1.6;margin:0">Notwendige Cookies halten diese Website funktionsfähig. Zusätzlich möchte ich Statistik- und Marketing-Dienste (Google Analytics, Google Ads, Meta-Pixel) sowie externe Medien (Karten, Videos, Terminbuchung) nutzen. Diese laden erst mit Ihrer Einwilligung. Sie können sie jederzeit widerrufen.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+        <button onClick="{{ acceptAll }}" style="background:var(--gradient-brand-45);color:#fff;border:none;border-radius:12px;padding:13px 24px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer" style-hover="box-shadow:var(--shadow-brand)">Alle akzeptieren</button>
+        <button onClick="{{ acceptNecessary }}" style="background:#fff;color:var(--text-primary);border:1px solid var(--border-strong);border-radius:12px;padding:13px 24px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer" style-hover="background:var(--surface-muted)">Nur notwendige</button>
+        <span style="flex:1"></span>
+        <button onClick="{{ goDatenschutz }}" style="background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:14px;font-weight:600;color:var(--color-brand)">Datenschutz</button>
+        <button onClick="{{ goImpressum }}" style="background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:14px;font-weight:600;color:var(--color-brand)">Impressum</button>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;showHeroSwitcher&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;ctaLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Erstgespräch sichern&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Inhalte&quot;},&quot;contactEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;kontakt@heckel-consulting.de&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Inhalte&quot;},&quot;nettoMin&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;2.500 €&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Inhalte&quot;}}">
 class Component extends DCLogic {
-  state = { page:'home', hv:7, pv:1, scrolled:false, faq:-1, r2b:false,
+  state = { page:'home', hv:7, pv:1, scrolled:false, faq:-1, r2b:false, consent:'init',
     bDay:-1, bTime:-1, bName:'', bEmail:'', bDone:false, bErr:'' };
   rootRef = React.createRef();
   reduced = (typeof window!=='undefined' && window.matchMedia) ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false;
 
   goto(page){ this.setState({ page }); if(typeof window!=='undefined') window.scrollTo(0,0); this.kickCharts(); }
+
+  setConsent(v){
+    try { window.localStorage.setItem('ff-consent', v); } catch(e){}
+    this.setState({ consent:v });
+  }
 
   goTeam(){
     const doScroll=()=>{ const el=this.rootRef.current && this.rootRef.current.querySelector('[data-team-anchor]'); if(el && typeof window!=='undefined'){ const y=el.getBoundingClientRect().top + window.scrollY - 80; window.scrollTo({ top:y, behavior: this.reduced ? 'auto' : 'smooth' }); } };
@@ -1405,6 +1826,10 @@ class Component extends DCLogic {
   }
 
   componentDidMount(){
+    try {
+      const c = window.localStorage.getItem('ff-consent');
+      this.setState({ consent: (c === 'all' || c === 'necessary') ? c : 'ask' });
+    } catch(e){ this.setState({ consent:'ask' }); }
     this._onScroll = () => {
       const s = window.scrollY > 10; if(s !== this.state.scrolled) this.setState({ scrolled:s });
       if(!this._raf){ this._raf = requestAnimationFrame(()=>{ this._raf = 0; this.updateCharts(); }); }
@@ -1421,6 +1846,8 @@ class Component extends DCLogic {
     if(this.rootRef.current) this._mo.observe(this.rootRef.current, { childList:true, subtree:true });
   }
   componentDidUpdate(pp, ps){
+    ps = ps || this._dcPrev || {};
+    this._dcPrev = { page: this.state.page, hv: this.state.hv };
     if(ps.page !== this.state.page || ps.hv !== this.state.hv){
       requestAnimationFrame(()=>this.scan());
       [60, 200, 500].forEach(ms=>setTimeout(()=>this.updateCharts(), ms));
@@ -1441,7 +1868,7 @@ class Component extends DCLogic {
   renderVals(){
     const S = this.state;
     const ctaLabel = this.props.ctaLabel || 'Erstgespräch sichern';
-    const contactEmail = this.props.contactEmail || 'kontakt@heckel-consulting.de';
+    const contactEmail = this.props.contactEmail || 'info@flowfinanz.de';
     const nettoMin = this.props.nettoMin || '2.500 €';
     const showSwitcher = this.props.showHeroSwitcher !== false;
 
@@ -1513,11 +1940,16 @@ class Component extends DCLogic {
       navItems,
       goStart:()=>this.goto('home'), goLeist:()=>this.goto('leistungen'), goUeber:()=>this.goto('ueber'),
       goWissen:()=>this.goto('wissen'), goKontakt:()=>this.goto('kontakt'),
+      goImpressum:()=>this.goto('impressum'), goDatenschutz:()=>this.goto('datenschutz'),
+      showConsent: S.consent==='ask',
+      acceptAll:()=>this.setConsent('all'), acceptNecessary:()=>this.setConsent('necessary'),
+      reopenConsent:()=>this.setState({ consent:'ask' }),
       hvb1:hvbDark(1), hvb2:hvbDark(2), hvb3:hvbDark(3), hvb4:hvbDark(4), hvb5:hvbDark(5), hvb6:hvbDark(6), hvb7:hvbDark(7), hvb8:hvbDark(8),
       hvb1l:hvbLight(1), hvb2l:hvbLight(2), hvb3l:hvbLight(3), hvb4l:hvbLight(4), hvb5l:hvbLight(5), hvb6l:hvbLight(6), hvb7l:hvbLight(7), hvb8l:hvbLight(8),
       showSwitcher, ctaLabel, contactEmail, nettoMin,
       isHome:S.page==='home', isLeist:S.page==='leistungen', isUeber:S.page==='ueber',
       isWissen:S.page==='wissen', isKontakt:S.page==='kontakt',
+      isImpressum:S.page==='impressum', isDatenschutz:S.page==='datenschutz',
       hv1:S.hv===1||S.hv>=4, hv2:S.hv===2, hv3:S.hv===3,
       pv1:S.pv===1, pv2:S.pv===2, pv3:S.pv===3,
       pvb1:pvb(1), pvb2:pvb(2), pvb3:pvb(3),
