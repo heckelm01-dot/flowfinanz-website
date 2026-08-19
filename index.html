@@ -51,7 +51,7 @@
   <div aria-hidden="true" style="position:fixed;inset:0;z-index:1;pointer-events:none;background-image:linear-gradient(rgba(10,91,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(10,91,255,.07) 1px,transparent 1px);background-size:46px 46px;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 22%,#000 78%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0%,#000 22%,#000 78%,transparent 100%)"></div>
 
   <header style="{{ headerStyle }}">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; width: 1391px; height: 88px">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; position: relative">
       <button onClick="{{ goStart }}" style="background:none;border:none;cursor:pointer;padding:0;display:flex;align-items:center;gap:12px;text-align:left">
         <img src="assets/mark.png" alt="flowfinanz" style="height:34px;width:auto">
         <span style="display:block">
@@ -59,13 +59,28 @@
           <span style="{{ brandSubStyle }}">Immobilien- &amp; Finanzberatung</span>
         </span>
       </button>
-      <nav style="display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+      <nav style="{{ navRowStyle }}">
         <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="5">
           <button onClick="{{ n.onClick }}" style="{{ n.style }}">{{ n.label }}</button>
         </sc-for>
       </nav>
-      <x-import component-from-global-scope="HeckelConsultingDesignSystem_50dcd5.Button" hint-size="auto,44px" variant="gradient" size="md" on-click="{{ goKontakt }}">{{ ctaLabel }}</x-import>
+      <div style="{{ ctaWrapStyle }}">
+        <x-import component-from-global-scope="HeckelConsultingDesignSystem_50dcd5.Button" hint-size="auto,44px" variant="gradient" size="md" on-click="{{ goKontakt }}">{{ ctaLabel }}</x-import>
+      </div>
+      <button onClick="{{ toggleNav }}" aria-label="Menü öffnen" style="{{ hamburgerBtnStyle }}">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+      </button>
     </div>
+    <sc-if value="{{ mobileMenuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="{{ mobileMenuPanelStyle }}">
+      <sc-for list="{{ mobileNavItems }}" as="n" hint-placeholder-count="6">
+        <button onClick="{{ n.onClick }}" style="{{ n.style }}">{{ n.label }}</button>
+      </sc-for>
+      <div style="padding:10px 4px 0">
+        <x-import component-from-global-scope="HeckelConsultingDesignSystem_50dcd5.Button" hint-size="100%,48px" variant="gradient" size="md" on-click="{{ closeAndKontakt }}">{{ ctaLabel }}</x-import>
+      </div>
+    </div>
+    </sc-if>
   </header>
 
   <main>
@@ -93,7 +108,7 @@
           <button onClick="{{ hvb9l.onClick }}" style="{{ hvb9l.style }}">9</button>
         </div>
         </sc-if>
-        <div style="display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(32px,5vw,56px);align-items:center">
+        <div style="display:grid;grid-template-columns:{{ gHero }};gap:clamp(32px,5vw,56px);align-items:center">
           <div>
             <sc-if value="{{ hc1 }}" hint-placeholder-val="{{ true }}">
             <p style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.22em;color:var(--color-brand);margin:0 0 20px;animation:heroFade .7s var(--ease-out) both">NIMM DEINE FINANZEN SELBST IN DIE HAND</p>
@@ -177,7 +192,7 @@
           <button onClick="{{ hvb9.onClick }}" style="{{ hvb9.style }}">9</button>
         </div>
         </sc-if>
-        <div style="display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(32px,5vw,56px);align-items:center">
+        <div style="display:grid;grid-template-columns:{{ gHero }};gap:clamp(32px,5vw,56px);align-items:center">
           <div>
             <p style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.22em;color:var(--cyan-500);margin:0 0 20px;animation:heroFade .7s var(--ease-out) both">UNGEBUNDEN &amp; EHRLICH</p>
             <h1 style="font-size:clamp(38px,5.4vw,66px);font-weight:800;letter-spacing:-0.03em;line-height:1.04;margin:0 0 24px;color:#fff;animation:heroFade .7s var(--ease-out) .06s both">Verkauft wurde dir viel.<br>Beraten wurdest du <span style="background:var(--gradient-brand-45);-webkit-background-clip:text;background-clip:text;color:transparent">selten.</span></h1>
@@ -319,7 +334,7 @@
           <button onClick="{{ hvb9l.onClick }}" style="{{ hvb9l.style }}">9</button>
         </div>
         </sc-if>
-        <div style="display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,60px);align-items:center">
+        <div style="display:grid;grid-template-columns:{{ gHero2 }};gap:clamp(32px,5vw,60px);align-items:center">
           <div>
             <p style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.22em;color:var(--color-brand);margin:0 0 18px;animation:heroFade .7s var(--ease-out) both">Immobilien- &amp; Finanzberatung</p>
             <h1 style="font-size:clamp(38px,5.2vw,64px);font-weight:800;letter-spacing:-0.02em;line-height:1.06;margin:0 0 22px;animation:heroFade .7s var(--ease-out) .06s both">Beratung, die dir auch mal <span style="background:var(--gradient-brand-45);-webkit-background-clip:text;background-clip:text;color:transparent">abrät.</span></h1>
@@ -382,7 +397,7 @@
           <h2 style="font-size:clamp(28px,3.8vw,44px);font-weight:800;letter-spacing:-0.02em;line-height:1.1;margin:0 0 14px">„Irgendwo irgendwie investiert“ ist keine Strategie.</h2>
           <p style="font-size:clamp(16px,1.4vw,18px);color:var(--text-secondary);line-height:1.6;margin:0">ETF hier, alte Police da, ein Bausparer von damals. Vieles davon ist nicht falsch. Aber ohne System weißt du nie, ob es reicht und was fehlt.</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px">
+        <div style="display:grid;grid-template-columns:{{ g3 }};gap:22px">
           <div data-reveal="" style="opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease-out) 0s,transform .8s var(--ease-out) 0s;position:relative;overflow:hidden;background:#fff;border:1px solid var(--border-subtle);border-radius:20px;padding:clamp(26px,2.6vw,36px);box-shadow:var(--shadow-sm)">
             <span style="position:absolute;top:10px;right:18px;font-size:clamp(56px,5.5vw,76px);font-weight:800;letter-spacing:-0.04em;line-height:1;color:rgba(10,91,255,.07);pointer-events:none">01</span>
             <span style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:14px;background:var(--color-brand-soft);color:var(--color-brand);border:1px solid rgba(24,119,254,.18);margin-bottom:18px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="5" width="6" height="6" rx="1.5"></rect><rect x="5" y="14" width="6" height="6" rx="1.5"></rect><rect x="15" y="15" width="5" height="5" rx="1.5"></rect></svg></span>
@@ -413,7 +428,7 @@
             <h2 style="font-size:clamp(28px,3.8vw,44px);font-weight:800;letter-spacing:-0.02em;line-height:1.1;margin:0 0 14px;color:#fff">„Irgendwo irgendwie investiert“ ist keine Strategie.</h2>
             <p style="font-size:clamp(16px,1.4vw,18px);color:rgba(255,255,255,.72);line-height:1.6;margin:0">ETF hier, alte Police da, ein Bausparer von damals. Vieles davon ist nicht falsch. Aber ohne System weißt du nie, ob es reicht und was fehlt.</p>
           </div>
-          <div style="position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+          <div style="position:relative;display:grid;grid-template-columns:{{ g3 }};gap:18px">
             <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);border-radius:18px;padding:clamp(24px,2.4vw,32px);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)">
               <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:13px;background:rgba(92,214,254,.12);color:var(--cyan-500,#5CD6FE);border:1px solid rgba(92,214,254,.25);margin-bottom:16px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="5" width="6" height="6" rx="1.5"></rect><rect x="5" y="14" width="6" height="6" rx="1.5"></rect><rect x="15" y="15" width="5" height="5" rx="1.5"></rect></svg></span>
               <h3 style="font-size:19px;font-weight:800;letter-spacing:-0.01em;margin:0 0 8px;color:#fff">Kein System</h3>
@@ -434,7 +449,7 @@
       </div>
       </sc-if>
       <sc-if value="{{ pv3 }}" hint-placeholder-val="{{ false }}">
-      <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(36px,5vw,64px);align-items:start">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:{{ gHero3 }};gap:clamp(36px,5vw,64px);align-items:start">
         <div data-reveal="" style="opacity:0;transform:translateY(32px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)">
           <p style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.22em;color:var(--color-brand);margin:0 0 14px">Das Problem</p>
           <h2 style="font-size:clamp(28px,3.8vw,44px);font-weight:800;letter-spacing:-0.02em;line-height:1.1;margin:0 0 14px">„Irgendwo irgendwie investiert“ ist keine Strategie.</h2>
@@ -560,7 +575,7 @@
         </div>
         <div style="position:relative">
           <svg viewBox="0 0 1152 60" preserveAspectRatio="none" style="position:absolute;left:0;right:0;top:40px;width:100%;height:60px;pointer-events:none"><defs><linearGradient id="fp1" x1="0" y1="0" x2="1152" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#0A5BFF"></stop><stop offset="1" stop-color="#5CD6FE"></stop></linearGradient></defs><path d="M30 30 C 250 -8, 420 68, 576 30 C 730 -8, 900 68, 1122 30" fill="none" stroke="url(#fp1)" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 10" style="animation:infFlow 6s linear infinite"></path></svg>
-          <div style="position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+          <div style="position:relative;display:grid;grid-template-columns:{{ g3 }};gap:20px">
             <div data-reveal="" style="opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease-out) 0s,transform .8s var(--ease-out) 0s;background:#fff;border:1px solid var(--border-subtle);border-radius:18px;box-shadow:var(--shadow-md);padding:clamp(24px,2.6vw,30px)">
               <span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;background:var(--gradient-brand-45);color:#fff;font-weight:800;font-size:17px;margin-bottom:16px">1</span>
               <h3 style="font-size:19px;font-weight:800;margin:0 0 8px">Diagnose</h3>
@@ -583,7 +598,7 @@
 
     <!-- FINANZBILDUNG INKLUSIVE -->
     <section style="padding:clamp(56px,8vw,100px) 0;background:#fff">
-      <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,56px);align-items:center">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:{{ g2 }};gap:clamp(32px,5vw,56px);align-items:center">
         <div data-reveal="" style="opacity:0;transform:translateY(32px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)">
           <p style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.22em;color:var(--color-brand);margin:0 0 14px">Finanzbildung inklusive</p>
           <h2 style="font-size:clamp(26px,3.4vw,40px);font-weight:800;letter-spacing:-0.02em;line-height:1.15;margin:0 0 16px">„Keiner geht aus der Beratung raus, bevor alle Fragezeichen im Kopf gelöst wurden.“</h2>
@@ -606,7 +621,7 @@
           <h2 style="font-size:clamp(30px,4vw,48px);font-weight:800;letter-spacing:-0.02em;line-height:1.08;margin:0 0 16px">Erst der Plan. Dann das Produkt.</h2>
           <p style="font-size:clamp(16px,1.4vw,19px);color:var(--text-secondary);line-height:1.65;margin:0">Zuerst dein Fundament, dann der Hebel. In genau dieser Reihenfolge — und nur, wenn deine Zahlen es hergeben.</p>
         </div>
-        <div data-reveal="" style="opacity:0;transform:translateY(32px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);position:relative;display:grid;grid-template-columns:1fr 1fr;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md);margin-top:40px">
+        <div data-reveal="" style="opacity:0;transform:translateY(32px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);position:relative;display:grid;grid-template-columns:{{ g2 }};border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md);margin-top:40px">
           <div style="padding:clamp(28px,3vw,40px);background:#fff;border:1px solid var(--border-subtle);border-right:none">
             <span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;background:var(--color-brand-soft);color:var(--color-brand);margin-bottom:16px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"></path></svg></span>
             <div style="font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.16em;color:var(--color-brand);margin-bottom:6px">Schritt 1 · Grundlage</div>
@@ -644,7 +659,7 @@
 
     <!-- GANZHEITLICH -->
     <section style="position:relative;background:var(--surface-muted);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);padding:clamp(56px,8vw,100px) 0;overflow:hidden">
-      <div aria-hidden="true" style="position:absolute;top:0;right:0;bottom:0;width:min(46%,620px);z-index:0;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 42%,#000 100%);mask-image:linear-gradient(90deg,transparent 0%,#000 42%,#000 100%)">
+      <div aria-hidden="true" style="{{ ganzBgDisplay }};position:absolute;top:0;right:0;bottom:0;width:min(46%,620px);z-index:0;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 42%,#000 100%);mask-image:linear-gradient(90deg,transparent 0%,#000 42%,#000 100%)">
         <div style="position:absolute;inset:0;opacity:.5;filter:saturate(.9)">
           <x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="100%,100%" id="v2-ganzheitlich-portrait" shape="rect" object-fit="cover" object-position="right bottom" placeholder="Freigestelltes Foto von Michael (Hintergrund, rechts)"></x-import>
         </div>
@@ -655,7 +670,7 @@
           <h2 style="font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-0.02em;line-height:1.1;margin:0 0 14px">Ein Ansprechpartner. Alle Finanzthemen.</h2>
           <p style="font-size:clamp(16px,1.4vw,18px);color:var(--text-secondary);line-height:1.6;margin:0">Vermögensaufbau funktioniert nur, wenn das Drumherum stimmt. Deshalb gehört das hier immer dazu:</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+        <div style="display:grid;grid-template-columns:{{ g4 }};gap:20px">
           <div data-reveal="" style="opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease-out) 0s,transform .8s var(--ease-out) 0s,box-shadow .3s var(--ease-out);background:#fff;border:1px solid var(--border-subtle);border-radius:16px;box-shadow:var(--shadow-sm);padding:26px" style-hover="box-shadow:var(--shadow-lg)">
             <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:13px;background:var(--color-brand-soft);color:var(--color-brand);margin-bottom:16px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M18 9l-5 5-3-3-4 4"></path></svg></span>
             <h3 style="font-size:17px;font-weight:700;margin:0 0 8px">Kostencheck</h3>
@@ -685,7 +700,7 @@
       <div style="position:absolute;top:-80px;right:-40px;width:340px;height:340px;background:var(--gradient-brand-45);filter:blur(110px);opacity:.18;border-radius:50%"></div>
       <div style="max-width:1200px;margin:0 auto;padding:0 24px;position:relative">
         <p data-reveal="" style="opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.22em;color:var(--cyan-500);margin:0 0 24px">Wofür wir stehen</p>
-        <div data-reveal="" style="opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease-out) .08s,transform .8s var(--ease-out) .08s;display:grid;grid-template-columns:1fr 1fr;gap:14px 40px">
+        <div data-reveal="" style="opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease-out) .08s,transform .8s var(--ease-out) .08s;display:grid;grid-template-columns:{{ g2 }};gap:14px 40px">
           <div style="font-size:clamp(19px,2vw,24px);font-weight:800;letter-spacing:-0.01em;line-height:1.3">Fundament <span style="color:rgba(255,255,255,.45);font-weight:600">statt Produkt.</span></div>
           <div style="font-size:clamp(19px,2vw,24px);font-weight:800;letter-spacing:-0.01em;line-height:1.3">Beratung <span style="color:rgba(255,255,255,.45);font-weight:600">statt Verkauf.</span></div>
           <div style="font-size:clamp(19px,2vw,24px);font-weight:800;letter-spacing:-0.01em;line-height:1.3">Ungebunden <span style="color:rgba(255,255,255,.45);font-weight:600">statt Struktur.</span></div>
@@ -762,7 +777,7 @@
             <p style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.22em;color:var(--color-brand);margin:0 0 14px">DER ABLAUF</p>
             <h2 style="font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-0.02em;margin:0">Klarheit. Kein Kleingedrucktes.</h2>
           </div>
-          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,26px);align-items:stretch">
+          <div style="display:grid;grid-template-columns:{{ g4 }};gap:clamp(16px,2vw,26px);align-items:stretch">
             <div data-step-card="" style="opacity:0;transform:perspective(1200px) translateX(-45vw) rotateY(-95deg);transform-origin:left center;backface-visibility:hidden;will-change:transform,opacity;background:#fff;border:1px solid var(--border-subtle);border-radius:18px;box-shadow:var(--shadow-md);padding:clamp(22px,2.4vw,30px)">
               <span style="font-size:clamp(38px,4vw,48px);font-weight:800;letter-spacing:-0.02em;background:var(--gradient-brand-45);-webkit-background-clip:text;background-clip:text;color:transparent;display:block;line-height:1">01</span>
               <h3 style="font-size:19px;font-weight:700;margin:14px 0 8px">Erstgespräch</h3>
@@ -820,7 +835,7 @@
             <h2 style="font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-0.02em;margin:0 0 12px">Vier Schritte. Ein Kreislauf.</h2>
             <p style="font-size:clamp(16px,1.4vw,18px);color:var(--text-secondary);line-height:1.6;margin:0 auto;max-width:52ch">Jeder Schritt schließt den nächsten auf — bis der Kreislauf steht und nicht mehr abreißt.</p>
           </div>
-          <div style="display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:clamp(18px,2.6vw,40px);align-items:center">
+          <div style="display:grid;grid-template-columns:{{ gAblauf2 }};gap:clamp(18px,2.6vw,40px);align-items:center">
             <div style="display:flex;flex-direction:column;gap:clamp(14px,2vw,22px)">
             <div data-step2-card="0" data-from="-1" style="opacity:0;will-change:transform,opacity;background:#fff;border:1px solid var(--border-subtle);border-radius:18px;box-shadow:var(--shadow-md);padding:clamp(18px,2vw,26px)">
               <span style="font-size:clamp(30px,3.2vw,40px);font-weight:800;letter-spacing:-0.02em;background:var(--gradient-brand-45);-webkit-background-clip:text;background-clip:text;color:transparent;display:block;line-height:1">01</span>
@@ -868,7 +883,7 @@
 
     <!-- PERMANENT STATT EINMALIG -->
     <section style="padding:clamp(56px,8vw,100px) 0;background:var(--surface-muted,#F6F8FB);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
-      <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,56px);align-items:center">
+      <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:{{ g2 }};gap:clamp(32px,5vw,56px);align-items:center">
         <div data-reveal="" style="opacity:0;transform:translateY(32px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)">
           <p style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.22em;color:var(--color-brand);margin:0 0 14px">Permanent statt einmalig</p>
           <h2 style="font-size:clamp(26px,3.4vw,40px);font-weight:800;letter-spacing:-0.02em;line-height:1.15;margin:0 0 16px">Nach der Beratung fängt die Betreuung erst an.</h2>
@@ -894,7 +909,7 @@
           <h2 style="font-size:clamp(28px,3.8vw,44px);font-weight:800;letter-spacing:-0.02em;margin:0 0 16px">Das ist unser Expertenteam</h2>
           <p style="font-size:clamp(16px,1.4vw,18px);color:var(--text-secondary);line-height:1.62;margin:0">Unser Team besteht aus Fachexperten &amp; unserem Backoffice, das dir bei Rückfragen, Leistungsfällen und weiteren Anliegen mit Rat &amp; Tat zur Seite steht.</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,36px);align-items:start;padding-bottom:clamp(32px,4.5vw,64px)">
+        <div style="display:grid;grid-template-columns:{{ g4 }};gap:clamp(20px,3vw,36px);align-items:start;padding-bottom:clamp(32px,4.5vw,64px)">
           <div data-reveal="" style="opacity:0;transform:translate(-70px,50px) rotate(-12deg) scale(.6);transition:opacity .85s var(--ease-out) 0s,transform .95s cubic-bezier(.22,1.2,.36,1) 0s;display:flex;flex-direction:column;align-items:center;text-align:center">
             <div style="width:clamp(120px,13vw,168px);aspect-ratio:1;border-radius:50%;overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:20px">
               <x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="100%,100%" id="v2-team-rene" shape="circle" placeholder="Foto René"></x-import>
@@ -968,7 +983,7 @@
               </div>
             </div>
             <p style="font-size:16.5px;color:rgba(255,255,255,.78);line-height:1.65;margin:0 0 24px;max-width:64ch">Die erste Kapitalanlage-Immobilie ist der stärkste Vermögenshebel für Angestellte mit gutem Einkommen: Die Bank finanziert, der Mieter tilgt, der Staat gibt Steuervorteile. Ich begleite dich durch den gesamten Prozess — mit vollständiger Rechnung vor jeder Entscheidung.</p>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px 28px;margin-bottom:26px">
+            <div style="display:grid;grid-template-columns:{{ g2 }};gap:12px 28px;margin-bottom:26px">
               <span style="display:inline-flex;align-items:center;gap:10px;font-size:15px;color:rgba(255,255,255,.9)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--cyan-500)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 6L9 17l-5-5"></path></svg>Objektauswahl &amp; Prüfung (Lage, Substanz, Multiplikator)</span>
               <span style="display:inline-flex;align-items:center;gap:10px;font-size:15px;color:rgba(255,255,255,.9)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--cyan-500)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 6L9 17l-5-5"></path></svg>Finanzierungsstruktur &amp; Bankgespräch</span>
               <span style="display:inline-flex;align-items:center;gap:10px;font-size:15px;color:rgba(255,255,255,.9)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--cyan-500)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 6L9 17l-5-5"></path></svg>Steuervorteile nutzen (AfA, Zinsen, Werbungskosten)</span>
@@ -991,7 +1006,7 @@
             </div>
           </div>
           <p style="font-size:16.5px;color:var(--text-secondary);line-height:1.65;margin:0 0 24px;max-width:64ch">Wenn die Immobilie (noch) nicht passt — oder als zweites Standbein daneben: eine breit gestreute ETF-Strategie und eine sauber gebaute ETF-Police für die Altersvorsorge. Kostengünstig, flexibel und steuerlich durchdacht, statt teurer Produkte von der Stange.</p>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px 28px;margin-bottom:26px">
+          <div style="display:grid;grid-template-columns:{{ g2 }};gap:12px 28px;margin-bottom:26px">
             <span style="display:inline-flex;align-items:center;gap:10px;font-size:15px;color:var(--text-primary)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 6L9 17l-5-5"></path></svg>Rentenlücke konkret berechnet</span>
             <span style="display:inline-flex;align-items:center;gap:10px;font-size:15px;color:var(--text-primary)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 6L9 17l-5-5"></path></svg>ETF-Police mit niedrigen Kosten</span>
             <span style="display:inline-flex;align-items:center;gap:10px;font-size:15px;color:var(--text-primary)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 6L9 17l-5-5"></path></svg>Weltweit gestreute Portfolios</span>
@@ -1013,7 +1028,7 @@
             </div>
           </div>
           <p style="font-size:16.5px;color:var(--text-secondary);line-height:1.65;margin:0 0 24px;max-width:64ch">Bevor neues Geld angelegt wird, wird das alte aufgeräumt: Wir gehen deine laufenden Kosten, Versicherungen und Verträge durch. Was gut ist, bleibt. Was teuer ist, fliegt. Was fehlt, wird ergänzt. Oft finanziert allein dieser Schritt die ersten Sparraten.</p>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px 28px;margin-bottom:26px">
+          <div style="display:grid;grid-template-columns:{{ g2 }};gap:12px 28px;margin-bottom:26px">
             <span style="display:inline-flex;align-items:center;gap:10px;font-size:15px;color:var(--text-primary)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 6L9 17l-5-5"></path></svg>Kostencheck aller laufenden Verträge</span>
             <span style="display:inline-flex;align-items:center;gap:10px;font-size:15px;color:var(--text-primary)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 6L9 17l-5-5"></path></svg>Vertragscheck bestehender Policen</span>
             <span style="display:inline-flex;align-items:center;gap:10px;font-size:15px;color:var(--text-primary)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 6L9 17l-5-5"></path></svg>Absicherung: BU, Haftpflicht &amp; Co.</span>
@@ -1034,7 +1049,7 @@
           <p style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.22em;color:var(--color-brand);margin:0 0 14px">Fünf Kernwerte</p>
           <h2 style="font-size:clamp(28px,3.6vw,42px);font-weight:800;letter-spacing:-0.02em;margin:0">Daran kannst du uns messen.</h2>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px">
+        <div style="display:grid;grid-template-columns:{{ g5 }};gap:16px">
           <div data-reveal="" style="opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease-out) 0s,transform .8s var(--ease-out) 0s;background:var(--surface-muted,#F6F8FB);border:1px solid var(--border-subtle);border-radius:16px;padding:22px">
             <h3 style="font-size:15.5px;font-weight:800;margin:0 0 8px">Ungebunden</h3>
             <p style="font-size:13px;color:var(--text-secondary);line-height:1.55;margin:0">Ganzer Markt, kein Produktzwang. Wir empfehlen, du entscheidest.</p>
@@ -1062,7 +1077,7 @@
     <!-- VORAUSSETZUNGEN -->
     <section style="background:var(--surface-muted);border-top:1px solid var(--border-subtle);padding:clamp(56px,8vw,100px) 0">
       <div style="max-width:1000px;margin:0 auto;padding:0 24px">
-        <div data-reveal="" style="opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,56px);align-items:center">
+        <div data-reveal="" style="opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);display:grid;grid-template-columns:{{ g2 }};gap:clamp(28px,4vw,56px);align-items:center">
           <div>
             <p style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.22em;color:var(--color-brand);margin:0 0 14px">Ehrlichkeitscheck</p>
             <h2 style="font-size:clamp(28px,3.6vw,42px);font-weight:800;letter-spacing:-0.02em;line-height:1.1;margin:0 0 16px">Passt die Immobilie zu dir?</h2>
@@ -1102,7 +1117,7 @@
   <sc-if value="{{ isUeber }}" hint-placeholder-val="{{ false }}">
   <div data-screen-label="Über mich" style="animation:pageIn .5s var(--ease-out) both">
     <section style="background:linear-gradient(180deg,#F6F8FB 0%,#fff 100%);padding:clamp(52px,6vw,88px) 0 clamp(48px,6vw,80px)">
-      <div style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr .8fr;gap:clamp(32px,5vw,60px);align-items:center">
+      <div style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:{{ gAbout }};gap:clamp(32px,5vw,60px);align-items:center">
         <div>
           <p style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.22em;color:var(--color-brand);margin:0 0 16px">ÜBER</p>
           <h1 style="font-size:clamp(34px,5vw,58px);font-weight:800;letter-spacing:-0.02em;line-height:1.05;margin:0 0 6px">Michael Heckel</h1>
@@ -1125,7 +1140,7 @@
       <div style="position:absolute;top:-80px;right:-40px;width:340px;height:340px;background:var(--gradient-brand-45);filter:blur(110px);opacity:.18;border-radius:50%"></div>
       <div style="max-width:1100px;margin:0 auto;padding:0 24px;position:relative">
         <p data-reveal="" style="opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.22em;color:var(--cyan-500);margin:0 0 24px">Wofür wir stehen</p>
-        <div data-reveal="" style="opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease-out) .08s,transform .8s var(--ease-out) .08s;display:grid;grid-template-columns:1fr 1fr;gap:14px 40px">
+        <div data-reveal="" style="opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease-out) .08s,transform .8s var(--ease-out) .08s;display:grid;grid-template-columns:{{ g2 }};gap:14px 40px">
           <div style="font-size:clamp(19px,2vw,24px);font-weight:800;letter-spacing:-0.01em;line-height:1.3">Fundament <span style="color:rgba(255,255,255,.45);font-weight:600">statt Produkt.</span></div>
           <div style="font-size:clamp(19px,2vw,24px);font-weight:800;letter-spacing:-0.01em;line-height:1.3">Beratung <span style="color:rgba(255,255,255,.45);font-weight:600">statt Verkauf.</span></div>
           <div style="font-size:clamp(19px,2vw,24px);font-weight:800;letter-spacing:-0.01em;line-height:1.3">Ungebunden <span style="color:rgba(255,255,255,.45);font-weight:600">statt Struktur.</span></div>
@@ -1146,7 +1161,7 @@
           <h2 style="font-size:clamp(28px,3.6vw,42px);font-weight:800;letter-spacing:-0.02em;margin:0">Woher ich komme</h2>
         </div>
         <div style="display:flex;flex-direction:column">
-          <div style="display:grid;grid-template-columns:52px 1fr clamp(150px,20vw,220px);gap:20px;align-items:start">
+          <div style="display:grid;grid-template-columns:{{ gStation }};gap:20px;align-items:start">
             <div data-reveal="" style="opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);display:flex;flex-direction:column;align-items:center;height:100%"><span style="width:14px;height:14px;border-radius:50%;background:var(--gradient-brand-45);flex:none;margin-top:6px"></span><span style="width:2px;flex:1;background:var(--border-default);margin-top:6px"></span></div>
             <div data-reveal="" style="opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);padding-bottom:38px">
               <div style="font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--color-brand);margin-bottom:6px">STUDIUM &amp; THEORIE</div>
@@ -1157,7 +1172,7 @@
               <x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="100%,100%" id="v2-station-regensburg" shape="rect" placeholder="Bild: Universität Regensburg"></x-import>
             </div>
           </div>
-          <div style="display:grid;grid-template-columns:52px 1fr clamp(150px,20vw,220px);gap:20px;align-items:start">
+          <div style="display:grid;grid-template-columns:{{ gStation }};gap:20px;align-items:start">
             <div data-reveal="" style="opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);display:flex;flex-direction:column;align-items:center;height:100%"><span style="width:14px;height:14px;border-radius:50%;background:var(--gradient-brand-45);flex:none;margin-top:6px"></span><span style="width:2px;flex:1;background:var(--border-default);margin-top:6px"></span></div>
             <div data-reveal="" style="opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);padding-bottom:38px">
               <div style="font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--color-brand);margin-bottom:6px">AKADEMISCHER GRAD</div>
@@ -1168,7 +1183,7 @@
               <x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="100%,100%" id="v2-station-irebs" shape="rect" placeholder="Bild: IREBS"></x-import>
             </div>
           </div>
-          <div style="display:grid;grid-template-columns:52px 1fr clamp(150px,20vw,220px);gap:20px;align-items:start">
+          <div style="display:grid;grid-template-columns:{{ gStation }};gap:20px;align-items:start">
             <div data-reveal="" style="opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);display:flex;flex-direction:column;align-items:center;height:100%"><span style="width:14px;height:14px;border-radius:50%;background:var(--gradient-brand-45);flex:none;margin-top:6px"></span><span style="width:2px;flex:1;background:var(--border-default);margin-top:6px"></span></div>
             <div data-reveal="" style="opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);padding-bottom:38px">
               <div style="font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--color-brand);margin-bottom:6px">PRAXIS &amp; MARKTKENNTNISSE</div>
@@ -1183,7 +1198,7 @@
             <div data-reveal="" style="opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);display:flex;flex-direction:column;align-items:center"><span style="width:14px;height:14px;border-radius:50%;background:var(--gradient-brand-45);flex:none;margin-top:6px"></span></div>
             <div>
               <div data-reveal="" style="opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--color-brand);margin-bottom:14px">Heute</div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+              <div style="display:grid;grid-template-columns:{{ g2 }};gap:20px">
                 <div data-reveal="" style="opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);background:#fff;border:1px solid var(--border-subtle);border-radius:16px;box-shadow:var(--shadow-sm);padding:24px;display:flex;flex-direction:column;gap:12px">
                   <div style="border-radius:12px;overflow:hidden;aspect-ratio:16/8">
                     <x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="100%,100%" id="v2-station-content" shape="rect" placeholder="Bild: Finanz-Kanal"></x-import>
@@ -1209,7 +1224,7 @@
           <p style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.22em;color:var(--color-brand);margin:0 0 14px">Meine Werte</p>
           <h2 style="font-size:clamp(28px,3.6vw,42px);font-weight:800;letter-spacing:-0.02em;margin:0">Worauf du dich verlassen kannst</h2>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px">
+        <div style="display:grid;grid-template-columns:{{ g3 }};gap:22px">
           <div data-reveal="" style="opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease-out) 0s,transform .8s var(--ease-out) 0s;background:#fff;border:1px solid var(--border-subtle);border-radius:16px;box-shadow:var(--shadow-sm);padding:30px">
             <span style="display:inline-flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:13px;background:var(--color-brand-soft);color:var(--color-brand);margin-bottom:16px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"></path><path d="M6 7l-3 6a3 3 0 006 0z"></path><path d="M18 7l-3 6a3 3 0 006 0z"></path><path d="M7 7h10"></path><path d="M4 21h16"></path></svg></span>
             <h3 style="font-size:19px;font-weight:700;margin:0 0 8px">Ehrlichkeit</h3>
@@ -1266,7 +1281,7 @@
 
     <section style="padding:clamp(24px,3vw,40px) 0 clamp(56px,7vw,96px)">
       <div style="max-width:1200px;margin:0 auto;padding:0 24px">
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px">
+        <div style="display:grid;grid-template-columns:{{ g3 }};gap:22px">
           <sc-for list="{{ articles }}" as="a" hint-placeholder-count="6">
             <div data-reveal="" style="{{ a.style }}" style-hover="box-shadow:var(--shadow-lg);border-color:var(--border-default)">
               <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px">
@@ -1298,7 +1313,7 @@
           <h1 style="font-size:clamp(32px,4.6vw,54px);font-weight:800;letter-spacing:-0.02em;line-height:1.06;margin:0 0 18px">Sichere dir dein kostenloses <span style="background:var(--gradient-brand-45);-webkit-background-clip:text;background-clip:text;color:transparent">Erstgespräch.</span></h1>
           <p style="font-size:clamp(16px,1.5vw,19px);color:var(--text-secondary);line-height:1.6;margin:0">Wähle einfach einen Termin — 30 Minuten, per Video oder Telefon.</p>
         </div>
-        <div style="display:grid;grid-template-columns:.9fr 1.3fr;gap:clamp(28px,4vw,52px);align-items:start">
+        <div style="display:grid;grid-template-columns:{{ gKontakt }};gap:clamp(28px,4vw,52px);align-items:start">
 
           <div style="display:flex;flex-direction:column;gap:16px">
             <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:18px;box-shadow:var(--shadow-sm);padding:26px">
@@ -1347,13 +1362,13 @@
                 </sc-for>
               </div>
               <div style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px">2 · Uhrzeit auswählen</div>
-              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:24px">
+              <div style="display:grid;grid-template-columns:{{ g3 }};gap:9px;margin-bottom:24px">
                 <sc-for list="{{ timeChips }}" as="t" hint-placeholder-count="6">
                   <button onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</button>
                 </sc-for>
               </div>
               <div style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px">3 · Deine Daten</div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px">
+              <div style="display:grid;grid-template-columns:{{ g2 }};gap:14px;margin-bottom:18px">
                 <x-import component-from-global-scope="HeckelConsultingDesignSystem_50dcd5.Input" hint-size="100%,72px" label="Name" placeholder="Dein Name" value="{{ bName }}" on-change="{{ onBName }}"></x-import>
                 <x-import component-from-global-scope="HeckelConsultingDesignSystem_50dcd5.Input" hint-size="100%,72px" label="E-Mail" type="email" placeholder="name@beispiel.de" value="{{ bEmail }}" on-change="{{ onBEmail }}"></x-import>
               </div>
@@ -1410,7 +1425,7 @@
         </div>
 
         <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">Zuständige Aufsichts- und Erlaubnisbehörden</h2>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div style="display:grid;grid-template-columns:{{ g2 }};gap:16px">
           <div style="background:var(--surface-muted);border:1px solid var(--border-subtle);border-radius:14px;padding:20px 22px">
             <div style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.14em;color:var(--color-brand);margin-bottom:8px">§ 34D GEWO</div>
             <div style="font-size:15.5px;font-weight:700;margin-bottom:6px">IHK für München und Oberbayern</div>
@@ -1463,7 +1478,7 @@ Geltungsraum Deutschland</span></em><br></p>
 
         <h2 style="font-size:clamp(20px,2.1vw,25px);font-weight:800;letter-spacing:-0.01em;margin:44px 0 12px">Schlichtungsstellen</h2>
         <p style="font-size:16px;color:var(--text-secondary);line-height:1.68;margin:0 0 14px">Die Anschriften der Schlichtungsstellen, die bei Streitigkeiten zwischen Vermittlern oder Beratern und Versicherungsnehmern angerufen werden können, lauten:</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px">
+        <div style="display:grid;grid-template-columns:{{ g2 }};gap:16px;margin-bottom:14px">
           <div style="background:var(--surface-muted);border:1px solid var(--border-subtle);border-radius:14px;padding:20px 22px">
             <div style="font-size:15.5px;font-weight:700;margin-bottom:6px">Versicherungsombudsmann e. V.</div>
             <p style="font-size:14.5px;color:var(--text-secondary);line-height:1.6;margin:0">Postfach 08 06 32, 10006 Berlin<br>Telefon 0800 3696000<br><a href="https://www.versicherungsombudsmann.de" target="_blank" rel="noopener noreferrer">versicherungsombudsmann.de</a></p>
@@ -1737,7 +1752,7 @@ Geltungsraum Deutschland</span></em><br></p>
   <!-- ================= FOOTER ================= -->
   <footer style="background:var(--ink);color:#fff;padding:clamp(48px,6vw,72px) 0 32px">
     <div style="max-width:1200px;margin:0 auto;padding:0 24px">
-      <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px">
+      <div style="display:grid;grid-template-columns:{{ gFooter }};gap:40px">
         <div>
           <div style="display:flex;align-items:center;gap:12px">
             <img src="assets/mark.png" alt="flowfinanz" style="height:34px;width:auto">
@@ -1807,7 +1822,8 @@ Geltungsraum Deutschland</span></em><br></p>
 <script type="text/x-dc" data-dc-script data-props="{&quot;showHeroSwitcher&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;ctaLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Erstgespräch sichern&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Inhalte&quot;},&quot;contactEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;info@flowfinanz.de&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Inhalte&quot;},&quot;nettoMin&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;2.500 €&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Inhalte&quot;}}">
 class Component extends DCLogic {
   state = { page:'home', hv:7, av:1, pv:1, scrolled:false, faq:-1, r2b:false, consent:'init',
-    bDay:-1, bTime:-1, bName:'', bEmail:'', bDone:false, bErr:'' };
+    bDay:-1, bTime:-1, bName:'', bEmail:'', bDone:false, bErr:'',
+    vw: (typeof window!=='undefined' ? window.innerWidth : 1280), navOpen:false };
   rootRef = React.createRef();
   reduced = (typeof window!=='undefined' && window.matchMedia) ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false;
 
@@ -1887,6 +1903,8 @@ class Component extends DCLogic {
       return;
     }
     const vh = window.innerHeight || 800;
+    const isMob = window.innerWidth <= 680;
+    wrap.style.height = isMob ? '220vh' : '300vh';
     const rect = wrap.getBoundingClientRect();
     const total = Math.max(1, wrap.offsetHeight - vh);
     const p = Math.min(1, Math.max(0, -rect.top/total));
@@ -1897,9 +1915,13 @@ class Component extends DCLogic {
       const a = start + i*step, b = a + 0.17;
       const q = Math.min(1, Math.max(0, (p-a)/(b-a)));
       const ease = 1 - Math.pow(1-q, 3);
-      const tx = (from * (1-ease) * 38).toFixed(2);
-      const sc = (0.94 + ease*0.06).toFixed(3);
-      c.style.transform = 'translateX(' + tx + 'vw) scale(' + sc + ')';
+      if (isMob) {
+        c.style.transform = 'translateY(' + ((1-ease)*20).toFixed(2) + 'px)';
+      } else {
+        const tx = (from * (1-ease) * 38).toFixed(2);
+        const sc = (0.94 + ease*0.06).toFixed(3);
+        c.style.transform = 'translateX(' + tx + 'vw) scale(' + sc + ')';
+      }
       c.style.opacity = String(Math.min(1, ease*1.6));
     });
     const seq = Math.min(1, Math.max(0, (p-start)/(step*3 + 0.17)));
@@ -1979,6 +2001,10 @@ class Component extends DCLogic {
       if(!this._raf){ this._raf = requestAnimationFrame(()=>{ this._raf = 0; this.updateCharts(); }); }
     };
     window.addEventListener('scroll', this._onScroll, { passive:true });
+    this._onResize = () => {
+      if (!this._rafR) this._rafR = requestAnimationFrame(() => { this._rafR = 0; this.setState({ vw: window.innerWidth }); });
+    };
+    window.addEventListener('resize', this._onResize, { passive:true });
     this._io = new IntersectionObserver((ents)=>{
       ents.forEach(e=>{ if(e.isIntersecting){ const el=e.target; el.style.opacity='1'; el.style.transform='none'; this._io.unobserve(el); } });
     }, { threshold:0.12, rootMargin:'0px 0px -6% 0px' });
@@ -1997,7 +2023,7 @@ class Component extends DCLogic {
       [60, 200, 500].forEach(ms=>setTimeout(()=>this.updateCharts(), ms));
     }
   }
-  componentWillUnmount(){ if(this._onScroll) window.removeEventListener('scroll', this._onScroll); if(this._io) this._io.disconnect(); if(this._mo) this._mo.disconnect(); }
+  componentWillUnmount(){ if(this._onScroll) window.removeEventListener('scroll', this._onScroll); if(this._onResize) window.removeEventListener('resize', this._onResize); if(this._io) this._io.disconnect(); if(this._mo) this._mo.disconnect(); }
 
   bookingDays(){
     const names = ['So','Mo','Di','Mi','Do','Fr','Sa'];
@@ -2011,6 +2037,22 @@ class Component extends DCLogic {
 
   renderVals(){
     const S = this.state;
+    const vw = S.vw || 1280;
+    const isMobile = vw <= 680;
+    const isNavCollapsed = vw <= 900;
+    const g2 = isMobile ? '1fr' : '1fr 1fr';
+    const g3 = isMobile ? '1fr' : 'repeat(3,1fr)';
+    const g4 = isMobile ? 'repeat(2,1fr)' : 'repeat(4,1fr)';
+    const gHero = isMobile ? '1fr' : '1.08fr .92fr';
+    const gHero2 = isMobile ? '1fr' : '1.1fr .9fr';
+    const gHero3 = isMobile ? '1fr' : '1fr 1.1fr';
+    const gAblauf2 = isMobile ? '1fr' : '1fr 1.2fr 1fr';
+    const g5 = isMobile ? '1fr 1fr' : 'repeat(5,1fr)';
+    const gFooter = isMobile ? '1fr' : '1.5fr 1fr 1fr';
+    const gAbout = isMobile ? '1fr' : '1fr .8fr';
+    const gKontakt = isMobile ? '1fr' : '.9fr 1.3fr';
+    const gStation = isMobile ? '1fr' : '52px 1fr clamp(150px,20vw,220px)';
+    const ganzBgDisplay = isMobile ? 'display:none' : 'display:block';
     const ctaLabel = this.props.ctaLabel || 'Erstgespräch sichern';
     const contactEmail = this.props.contactEmail || 'info@flowfinanz.de';
     const nettoMin = this.props.nettoMin || '2.500 €';
@@ -2025,6 +2067,19 @@ class Component extends DCLogic {
     const navBase = { background:'none', border:'none', cursor:'pointer', fontFamily:'inherit', fontSize:'15px', fontWeight:500, color: darkHdr ? 'rgba(255,255,255,.78)' : '#3a4453', padding:'6px 2px', transition:'color .2s' };
     const teamNav = { label:'Team', onClick:()=>this.goTeam(), style:navBase };
     const navItems = [ mk('Start','home'), teamNav, mk('Leistungen','leistungen'), mk('Über uns','ueber'), mk('Fachwissen','wissen'), mk('Kontakt','kontakt') ];
+    const toggleNav = () => this.setState(s => ({ navOpen: !s.navOpen }));
+    const mobileMenuOpen = isNavCollapsed && S.navOpen;
+    const mobileNavItems = navItems.map(it => ({ label: it.label, onClick: () => { it.onClick(); this.setState({ navOpen:false }); }, style: {
+      background:'none', border:'none', textAlign:'left', width:'100%', padding:'14px 4px', fontSize:'16px', fontWeight:600,
+      color:'#0B0F16', borderBottom:'1px solid var(--border-subtle)', cursor:'pointer', fontFamily:'inherit' } }));
+    const closeAndKontakt = () => { this.setState({ navOpen:false }); this.goto('kontakt'); };
+    const navRowStyle = { display: isNavCollapsed ? 'none' : 'flex', alignItems:'center', gap:'24px', flexWrap:'wrap' };
+    const ctaWrapStyle = { display: isNavCollapsed ? 'none' : 'block' };
+    const hamburgerBtnStyle = { display: isNavCollapsed ? 'inline-flex' : 'none', alignItems:'center', justifyContent:'center',
+      background:'none', border:'none', cursor:'pointer', padding:'6px', color: darkHdr ? '#fff' : '#0B0F16' };
+    const mobileMenuPanelStyle = { position:'absolute', top:'100%', left:0, right:0, background:'#fff',
+      borderTop:'1px solid var(--border-subtle)', boxShadow:'var(--shadow-lg)', display:'flex', flexDirection:'column',
+      padding:'8px 24px 20px', zIndex:60 };
 
     const hvbDark = (n) => ({ onClick:()=>{ this.setState({ hv:n }); this.kickCharts(); }, style:{
       width:'30px', height:'30px', borderRadius:'8px', border:'none', cursor:'pointer', fontWeight:700, fontSize:'13px',
@@ -2085,7 +2140,8 @@ class Component extends DCLogic {
         borderBottom: '1px solid ' + (S.scrolled ? 'var(--border-default)' : 'var(--border-subtle)') },
       brandNameStyle: { display:'block', fontSize:'20px', letterSpacing:'-0.02em', color: darkHdr ? '#fff' : '#0B0F16', lineHeight:1.1 },
       brandSubStyle: { display:'block', fontSize:'9px', fontWeight:600, textTransform:'uppercase', letterSpacing:'0.22em', color: darkHdr ? 'rgba(255,255,255,.62)' : 'var(--text-muted)', marginTop:'3px' },
-      navItems,
+      navItems, navRowStyle, ctaWrapStyle, hamburgerBtnStyle, toggleNav, mobileMenuOpen, mobileNavItems, mobileMenuPanelStyle, closeAndKontakt,
+      g2, g3, g4, g5, gHero, gHero2, gHero3, gAblauf2, gFooter, gAbout, gKontakt, gStation, ganzBgDisplay, isMobile,
       goStart:()=>this.goto('home'), goLeist:()=>this.goto('leistungen'), goUeber:()=>this.goto('ueber'),
       goWissen:()=>this.goto('wissen'), goKontakt:()=>this.goto('kontakt'),
       goImpressum:()=>this.goto('impressum'), goDatenschutz:()=>this.goto('datenschutz'),
